@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>העוזר החכם שלך לתביעות</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@600&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: white;
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .landing-page {
+            width: 100%;
+            min-height: 100vh;
+            background: white;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            width: 100%;
+            min-height: 758px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            position: relative;
+            padding: 82px 113px;
+        }
+
+        /* Hero Container */
+        .hero-container {
+            position: relative;
+            width: 1373px;
+            height: 676px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav {
+            position: absolute;
+            top: 0;
+            right: 180.528px;
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 146px;
+            align-items: flex-start;
+        }
+
+        .logo {
+            width: 211.549px;
+            height: 32.01px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            color: #141F39;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            line-height: 24px;
+            width: 560px;
+            height: 24.024px;
+            white-space: pre-wrap;
+        }
+
+        /* Text Container */
+        .text-container {
+            position: absolute;
+            top: 157px;
+            left: 0;
+            width: 994.572px;
+            height: 334px;
+        }
+
+        .hero-title-1 {
+            position: absolute;
+            left: 252.572px;
+            top: 0;
+            padding: 10px;
+            color: #141F39;
+            font-size: 70px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            line-height: 80px;
+            letter-spacing: -5px;
+            white-space: pre;
+        }
+
+        .hero-title-2 {
+            position: absolute;
+            left: 0;
+            top: 96px;
+            padding: 10px;
+            color: #141F39;
+            font-size: 70px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            line-height: 80px;
+            letter-spacing: -5px;
+            white-space: pre;
+        }
+
+        .hero-subheading {
+            position: absolute;
+            left: 203.714px;
+            top: 250px;
+            padding: 10px;
+            opacity: 0.70;
+            color: #4F4F4F;
+            font-size: 30px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 600;
+            line-height: 32px;
+            text-align: right;
+            white-space: pre;
+        }
+
+        /* Yellow underline - using Figma exact positioning */
+        .yellow-underline {
+            position: absolute;
+            left: 19.875px;
+            top: 333px;
+            width: 262.51px;
+            height: 55px;
+        }
+
+        .yellow-underline img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: -16.95%;
+            top: 0;
+            width: 116.95%;
+            height: 100%;
+        }
+
+        /* Person Image */
+        .person-image {
+            position: absolute;
+            right: -50px;
+            top: 120px;
+            width: 600px;
+            height: 600px;
+            z-index: 10;
+        }
+
+        .person-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Shape decoration */
+        .shape-decoration {
+            position: absolute;
+            left: 1049.21px;
+            top: 266px;
+            width: 323.79px;
+            height: 410px;
+            z-index: 1;
+        }
+
+        .shape-decoration img {
+            position: absolute;
+            top: -69.63%;
+            left: -89.56%;
+            width: 302.97%;
+            height: 239.26%;
+        }
+
+        /* Buttons Container */
+        .buttons-container {
+            position: absolute;
+            left: 82px;
+            top: 594px;
+            padding: 10px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            width: 237px;
+            height: 62px;
+            background: linear-gradient(180deg, #9888F4 0%, #715DE3 100%);
+            border-radius: 12px;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(113, 93, 227, 0.3);
+        }
+
+        .btn-secondary {
+            width: 190px;
+            height: 62px;
+            border-radius: 12px;
+            border: 1.8px solid #FFC700;
+            background: transparent;
+            color: #FFC700;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #FFC700;
+            color: #141F39;
+        }
+
+        .play-icon {
+            width: 28px;
+            height: 28px;
+            background: #FFC700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 15px;
+        }
+
+        .play-icon::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 0 6px 10px;
+            border-color: transparent transparent transparent #141F39;
+            margin-left: 2px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            margin-top: 0px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stats-background {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .stats-background img {
+            position: absolute;
+            left: 50%;
+            top: -50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+            min-height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .stats-content {
+            position: relative;
+            z-index: 10;
+            padding: 100px 120px;
+            text-align: center;
+            color: white;
+            max-width: 1200px;
+        }
+
+        .stats-heading {
+            color: white;
+            font-size: 64px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .stats-description {
+            color: white;
+            font-size: 28px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 600;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1600px) {
+            .hero-section {
+                padding: 60px 40px;
+            }
+
+            .hero-container {
+                width: 100%;
+                max-width: 1373px;
+            }
+
+            .nav {
+                right: 100px;
+            }
+
+            .shape-decoration {
+                left: auto;
+                right: -200px;
+            }
+
+            .stats-content {
+                padding: 80px 80px;
+            }
+
+            .stats-heading {
+                font-size: 56px;
+            }
+
+            .stats-description {
+                font-size: 24px;
+            }
+
+            .stats-background img {
+                top: -40%;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .hero-container {
+                transform: scale(0.85);
+                transform-origin: top right;
+            }
+
+            .stats-section {
+                min-height: 500px;
+            }
+
+            .stats-content {
+                padding: 60px 60px;
+            }
+
+            .stats-heading {
+                font-size: 48px;
+            }
+
+            .stats-description {
+                font-size: 22px;
+            }
+
+            .stats-background img {
+                top: -30%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 20px;
+            }
+
+            .hero-container {
+                position: static;
+                width: 100%;
+                height: auto;
+                transform: none;
+            }
+
+            .nav {
+                position: static;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .stats-section {
+                min-height: 400px;
+            }
+
+            .stats-content {
+                padding: 40px 20px;
+            }
+
+            .stats-heading {
+                font-size: 32px;
+            }
+
+            .stats-description {
+                font-size: 18px;
+            }
+
+            .stats-background img {
+                top: -20%;
+            }
+
+            .text-container {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+
+            .hero-title-1,
+            .hero-title-2,
+            .hero-subheading {
+                position: static;
+                font-size: 40px;
+                line-height: 48px;
+                white-space: normal;
+                text-align: right;
+                margin-bottom: 20px;
+            }
+
+            .hero-subheading {
+                font-size: 20px;
+                line-height: 24px;
+            }
+
+            .buttons-container {
+                position: static;
+                width: 100%;
+                margin-top: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .stats-content {
+                padding: 60px 20px;
+            }
+
+            .stats-heading {
+                font-size: 40px;
+            }
+
+            .stats-description {
+                font-size: 20px;
+            }
+
+            .yellow-underline,
+            .shape-decoration,
+            .person-image {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .person-image {
+                width: 400px;
+                height: 400px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <!-- Navigation -->
+                <nav class="nav">
+                    <div class="logo">
+                        <img src="http://localhost:3845/assets/d34d74f59ac73193a1b1358d0ef9b12dd01da682.svg" alt="Logo">
+                    </div>
+                    <div class="nav-menu">Home            Pages            Pricing            Portfolio            Blog            Contact</div>
+                </nav>
+
+                <!-- Text Container -->
+                <div class="text-container">
+                    <p class="hero-title-1">העוזר החכם שלך לתביעות </p>
+                    <p class="hero-title-2">עובד בשבילך  ,  מדבר כמוך ! </p>
+                    <p class="hero-subheading">דואג לתביעות שלך דרך הוואטסאפ, 24/7
+לא מתעייף, לא שוכח, לא צריך קפה והוא זול </p>
+                </div>
+
+                <!-- Yellow underline -->
+                <div class="yellow-underline">
+                    <img src="yellow mark.png" alt="">
+                </div>
+
+                <!-- Person Image -->
+                <div class="person-image">
+                    <img src="person image.png" alt="Person">
+                </div>
+
+                <!-- Shape decoration -->
+                <div class="shape-decoration">
+                    <img src="http://localhost:3845/assets/f331fc065d4a9209d40081d2577e124361a24b94.svg" alt="">
+                </div>
+
+                <!-- Buttons Container -->
+                <div class="buttons-container">
+                    <div class="hero-buttons">
+                        <button class="btn-primary">בואו נצא לדרך </button>
+                        <button class="btn-secondary">
+                            <span class="play-icon"></span>
+                            צפו בדמו
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-background">
+                <img src="diagonal-gradient-stripe.png" alt="">
+            </div>
+            <div class="stats-content">
+                <h2 class="stats-heading">מה זה יעשה לעסק שלכם</h2>
+                <p class="stats-description">
+                    הלקוחות שלכם מקבלים תשובה מדויקת בכל שעה, בלי לחכות<br>
+                    ולכם מתפנה המשאב היקר מכל - הזמן שלכם לספק שירות איכותי ולהתמקד בצמיחת העסק
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Button interactions
+        document.querySelector('.btn-primary').addEventListener('click', () => {
+            alert('קישור לטופס הרשמה');
+        });
+
+        document.querySelector('.btn-secondary').addEventListener('click', () => {
+            // Link to chat animation
+            window.location.href = 'chat-animation.html';
+        });
+    </script>
+</body>
+</html>
