@@ -240,17 +240,23 @@ const LandingPage = () => {
             המספרים מדברים בעד עצמם
           </h2>
           <div style={styles.numbersContainer(isMobile, isTablet)}>
-            <div style={styles.numberCard(isMobile, isTablet)}>
-              <div style={styles.numberGradient}>95%</div>
-              <p style={styles.numberLabel}>הצלחה בתביעות</p>
+            <div style={styles.numberItem(isMobile, isTablet)}>
+              <div style={styles.numberMain}>מידי</div>
+              <h3 style={styles.numberSubtitle}>זמן תגובה ללקוח</h3>
+              <p style={styles.numberHighlight}>מ-3 שעות למענה מידי</p>
+              <p style={styles.numberSubtext}>+100% שביעות רצון</p>
             </div>
-            <div style={styles.numberCard(isMobile, isTablet)}>
-              <div style={styles.numberGradient}>24/7</div>
-              <p style={styles.numberLabel}>זמינות מלאה</p>
+            <div style={styles.numberItem(isMobile, isTablet)}>
+              <div style={styles.numberMain}>3 דק׳</div>
+              <h3 style={styles.numberSubtitle}>זמן תפעול ממוצע לתביעה</h3>
+              <p style={styles.numberHighlight}>מ-30 דקות ל-3 דקות</p>
+              <p style={styles.numberSubtext}>90% פחות זמן עבודה</p>
             </div>
-            <div style={styles.numberCard(isMobile, isTablet)}>
-              <div style={styles.numberGradient}>1000+</div>
-              <p style={styles.numberLabel}>לקוחות מרוצים</p>
+            <div style={styles.numberItem(isMobile, isTablet)}>
+              <div style={styles.numberMain}>9 שעות</div>
+              <h3 style={styles.numberSubtitle}>שעות שנחסכות חודשית</h3>
+              <p style={styles.numberHighlight}>מ-10 ל-1 שעה בחודש</p>
+              <p style={styles.numberSubtext}>שבוע עבודה שלם בשנה</p>
             </div>
           </div>
         </section>
@@ -733,7 +739,7 @@ const styles = {
   // Numbers Section Styles
   numbersSection: (isMobile, isTablet) => ({
     width: '100%',
-    padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
+    padding: isMobile ? '40px 20px' : isTablet ? '50px 40px' : '60px 60px',
     backgroundColor: '#DFF0F5',
     marginTop: '-20px',
   }),
@@ -741,13 +747,71 @@ const styles = {
   numbersTitle: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
-    fontSize: isMobile ? '40px' : isTablet ? '56px' : '72px',
-    lineHeight: isMobile ? '48px' : isTablet ? '64px' : '80px',
+    fontSize: isMobile ? '32px' : isTablet ? '48px' : '64px',
+    lineHeight: isMobile ? '40px' : isTablet ? '56px' : '72px',
     color: '#1B2B4D',
     textAlign: 'center',
-    margin: '0',
+    margin: '0 0 30px 0',
     direction: 'rtl',
   }),
+
+  numbersContainer: (isMobile, isTablet) => ({
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    gap: isMobile ? '40px' : isTablet ? '60px' : '80px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  }),
+
+  numberItem: (isMobile, isTablet) => ({
+    textAlign: 'center',
+    flex: '1',
+    direction: 'rtl',
+  }),
+
+  numberMain: {
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: '48px',
+    lineHeight: '1',
+    color: '#1B2B4D',
+    margin: '0 0 16px 0',
+    direction: 'rtl',
+  },
+
+  numberSubtitle: {
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 600,
+    fontSize: '20px',
+    lineHeight: '1.2',
+    color: '#1B2B4D',
+    margin: '0 0 12px 0',
+    direction: 'rtl',
+  },
+
+  numberHighlight: {
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 500,
+    fontSize: '16px',
+    lineHeight: '1.3',
+    color: '#1B2B4D',
+    margin: '0 0 8px 0',
+    direction: 'rtl',
+    opacity: 0.8,
+  },
+
+  numberSubtext: {
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: '14px',
+    lineHeight: '1.3',
+    color: '#1B2B4D',
+    margin: '0',
+    direction: 'rtl',
+    opacity: 0.7,
+  }
   
 };
 
