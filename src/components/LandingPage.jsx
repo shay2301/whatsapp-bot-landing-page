@@ -234,6 +234,27 @@ const LandingPage = () => {
           </div>
         </section>
 
+        {/* Numbers Section */}
+        <section style={styles.numbersSection(isMobile, isTablet)}>
+          <h2 style={styles.numbersTitle(isMobile, isTablet)}>
+            המספרים מדברים בעד עצמם
+          </h2>
+          <div style={styles.numbersContainer(isMobile, isTablet)}>
+            <div style={styles.numberCard(isMobile, isTablet)}>
+              <div style={styles.numberGradient}>95%</div>
+              <p style={styles.numberLabel}>הצלחה בתביעות</p>
+            </div>
+            <div style={styles.numberCard(isMobile, isTablet)}>
+              <div style={styles.numberGradient}>24/7</div>
+              <p style={styles.numberLabel}>זמינות מלאה</p>
+            </div>
+            <div style={styles.numberCard(isMobile, isTablet)}>
+              <div style={styles.numberGradient}>1000+</div>
+              <p style={styles.numberLabel}>לקוחות מרוצים</p>
+            </div>
+          </div>
+        </section>
+
     </div>
   );
 };
@@ -670,7 +691,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: isMobile ? '0' : isTablet ? '20px' : '40px',
+    marginLeft: isMobile ? '0' : isTablet ? '150px' : '250px',
   }),
 
   thirdStepImageImg: {
@@ -707,6 +728,25 @@ const styles = {
     maxWidth: isMobile ? '100%' : '500px',
     direction: 'rtl',
     textAlign: 'right',
+  }),
+
+  // Numbers Section Styles
+  numbersSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
+    backgroundColor: '#DFF0F5',
+    marginTop: '-20px',
+  }),
+
+  numbersTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '40px' : isTablet ? '56px' : '72px',
+    lineHeight: isMobile ? '48px' : isTablet ? '64px' : '80px',
+    color: '#1B2B4D',
+    textAlign: 'center',
+    margin: '0',
+    direction: 'rtl',
   }),
   
 };
