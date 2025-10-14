@@ -143,51 +143,96 @@ const LandingPage = () => {
         </p>
       </section>
 
-      {/* Statistics Section */}
-      <section style={styles.statisticsSection(isMobile, isTablet)}>
-        <div style={styles.statisticsContainer(isMobile, isTablet)}>
-          <div style={styles.statCard(isMobile, isTablet)}>
-            <h3 style={styles.statNumber(isMobile, isTablet)}>2,847</h3>
-            <p style={styles.statLabel(isMobile, isTablet)}>תביעות שהוגשו</p>
+        {/* Simple Title Section */}
+        <section style={styles.simpleTitleSection(isMobile, isTablet)}>
+          <h2 style={styles.simpleTitle(isMobile, isTablet)}>
+            דאגנו לכם שהכל ישאר פשוט
+          </h2>
+          <div style={styles.elementUnderline(isMobile, isTablet)}>
+            <img
+              src="/Element.png"
+              alt=""
+              style={styles.elementImage(isMobile, isTablet)}
+              onError={(e) => {
+                // Fallback SVG if image not found
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = '<svg viewBox="0 0 200 20" style="width: 200px; height: 20px;"><path d="M10 10 Q50 5, 100 10 T190 10" stroke="#141F39" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
+              }}
+            />
           </div>
-          <div style={styles.statCard(isMobile, isTablet)}>
-            <h3 style={styles.statNumber(isMobile, isTablet)}>24/7</h3>
-            <p style={styles.statLabel(isMobile, isTablet)}>זמינות מלאה</p>
-          </div>
-          <div style={styles.statCard(isMobile, isTablet)}>
-            <h3 style={styles.statNumber(isMobile, isTablet)}>5 דק'</h3>
-            <p style={styles.statLabel(isMobile, isTablet)}>זמן ממוצע להגשה</p>
-          </div>
-          <div style={styles.statCard(isMobile, isTablet)}>
-            <h3 style={styles.statNumber(isMobile, isTablet)}>98%</h3>
-            <p style={styles.statLabel(isMobile, isTablet)}>שביעות רצון</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Section */}
-      <section style={styles.featuresSection(isMobile, isTablet)}>
-        <div style={styles.featuresContainer(isMobile, isTablet)}>
-          <h2 style={styles.featuresTitle(isMobile, isTablet)}>איך זה עובד?</h2>
-          <div style={styles.featuresGrid(isMobile, isTablet)}>
-            <div style={styles.featureCard(isMobile, isTablet)}>
-              <div style={styles.featureIcon(isMobile, isTablet)}>📱</div>
-              <h3 style={styles.featureTitle(isMobile, isTablet)}>שלח הודעה</h3>
-              <p style={styles.featureText(isMobile, isTablet)}>הלקוח שולח הודעה בוואטסאפ עם פרטי התביעה</p>
+        {/* First Step Section */}
+        <section style={styles.firstStepSection(isMobile, isTablet)}>
+          <div style={styles.firstStepContainer(isMobile, isTablet)}>
+            <div style={styles.firstStepImage(isMobile, isTablet)}>
+              <img
+                src="/firstStep.png"
+                alt="First Step"
+                style={styles.firstStepImageImg}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
             </div>
-            <div style={styles.featureCard(isMobile, isTablet)}>
-              <div style={styles.featureIcon(isMobile, isTablet)}>🤖</div>
-              <h3 style={styles.featureTitle(isMobile, isTablet)}>עיבוד אוטומטי</h3>
-              <p style={styles.featureText(isMobile, isTablet)}>הבוט מעבד את המידע ומכין את התביעה</p>
-            </div>
-            <div style={styles.featureCard(isMobile, isTablet)}>
-              <div style={styles.featureIcon(isMobile, isTablet)}>✅</div>
-              <h3 style={styles.featureTitle(isMobile, isTablet)}>הגשה מהירה</h3>
-              <p style={styles.featureText(isMobile, isTablet)}>התביעה מוגשת אוטומטית לסוכנות הביטוח</p>
+            <div style={styles.firstStepContent(isMobile, isTablet)}>
+              <h3 style={styles.firstStepTitle(isMobile, isTablet)}>
+                מתאימים את הסוכן לעסק שלך
+              </h3>
+              <p style={styles.firstStepText(isMobile, isTablet)}>
+                אנחנו מחברים את הבוט לעסק שלך, מגדירים את ההודעות, הטון והשלבים כך שיתאים בדיוק לאופן שבו אתה עובד ומדבר עם הלקוחות שלך.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Second Step Section */}
+        <section style={styles.secondStepSection(isMobile, isTablet)}>
+          <div style={styles.secondStepContainer(isMobile, isTablet)}>
+            <div style={styles.secondStepContent(isMobile, isTablet)}>
+              <h3 style={styles.secondStepTitle(isMobile, isTablet)}>
+                טיפול אוטומטי בפניות
+              </h3>
+              <p style={styles.secondStepText(isMobile, isTablet)}>
+                המערכת מזהה כשמדובר בתביעה ומתחילה תהליך אוטומטי של שאלות ואיסוף נתונים, בלי שתצטרך להתערב.
+              </p>
+            </div>
+            <div style={styles.secondStepImage(isMobile, isTablet)}>
+              <img
+                src="/step2.png"
+                alt="Second Step"
+                style={styles.secondStepImageImg}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Third Step Section */}
+        <section style={styles.thirdStepSection(isMobile, isTablet)}>
+          <div style={styles.thirdStepContainer(isMobile, isTablet)}>
+            <div style={styles.thirdStepImage(isMobile, isTablet)}>
+              <img
+                src="/STEP3.png"
+                alt="Third Step"
+                style={styles.thirdStepImageImg}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+            </div>
+            <div style={styles.thirdStepContent(isMobile, isTablet)}>
+              <h3 style={styles.thirdStepTitle(isMobile, isTablet)}>
+                אתה מקבל הכול מוכן
+              </h3>
+              <p style={styles.thirdStepText(isMobile, isTablet)}>
+                בסוף כל תהליך מחכה לך תיק תביעה מסודר עם כל הפרטים, המסמכים והנתונים מוכן לשליחה בלחיצה אחת
+              </p>
+            </div>
+          </div>
+        </section>
 
     </div>
   );
@@ -336,7 +381,7 @@ const styles = {
   
   personImage: (isTablet, width) => ({
     position: 'absolute',
-    right: width <= 1200 ? '100px' : '30px',
+    right: width <= 1200 ? '-20px' : '-50px',
     top: '160px',
     width: width <= 1200 ? '400px' : '600px',
     height: width <= 1200 ? '400px' : '600px',
@@ -453,101 +498,215 @@ const styles = {
     maxWidth: isMobile ? '100%' : '1000px',
   }),
 
-  // Statistics Section
-  statisticsSection: (isMobile, isTablet) => ({
-    width: '100%',
-    padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
-    backgroundColor: '#f8f9ff',
-  }),
-
-  statisticsContainer: (isMobile, isTablet) => ({
-    maxWidth: '1200px',
-    margin: '0 auto',
-    display: 'grid',
-    gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-    gap: isMobile ? '20px' : '40px',
-  }),
-
-  statCard: (isMobile, isTablet) => ({
-    backgroundColor: 'white',
-    borderRadius: '16px',
-    padding: isMobile ? '20px' : '30px',
-    textAlign: 'center',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-    border: '1px solid rgba(0, 0, 0, 0.05)',
-  }),
-
-  statNumber: (isMobile, isTablet) => ({
-    fontFamily: "'Varela Round', sans-serif",
-    fontWeight: 700,
-    fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px',
-    color: '#1B2B4D',
-    margin: '0 0 10px 0',
-  }),
-
-  statLabel: (isMobile, isTablet) => ({
-    fontFamily: "'Varela Round', sans-serif",
-    fontWeight: 400,
-    fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px',
-    color: '#666',
-    margin: 0,
-  }),
-
-  // Features Section
-  featuresSection: (isMobile, isTablet) => ({
+  // Simple Title Section
+  simpleTitleSection: (isMobile, isTablet) => ({
     width: '100%',
     padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
     backgroundColor: 'white',
-  }),
-
-  featuresContainer: (isMobile, isTablet) => ({
-    maxWidth: '1200px',
-    margin: '0 auto',
     textAlign: 'center',
   }),
 
-  featuresTitle: (isMobile, isTablet) => ({
+  simpleTitle: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
     fontSize: isMobile ? '32px' : isTablet ? '48px' : '64px',
-    color: '#1B2B4D',
-    margin: '0 0 60px 0',
-  }),
-
-  featuresGrid: (isMobile, isTablet) => ({
-    display: 'grid',
-    gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
-    gap: isMobile ? '30px' : '40px',
-  }),
-
-  featureCard: (isMobile, isTablet) => ({
-    backgroundColor: '#f8f9ff',
-    borderRadius: '20px',
-    padding: isMobile ? '30px 20px' : '40px 30px',
+    lineHeight: isMobile ? '40px' : isTablet ? '56px' : '72px',
+    color: '#141F39',
+    margin: '0 0 10px 0',
     textAlign: 'center',
-    border: '1px solid rgba(0, 0, 0, 0.05)',
+    position: 'relative',
   }),
 
-  featureIcon: (isMobile, isTablet) => ({
-    fontSize: isMobile ? '40px' : '48px',
-    marginBottom: '20px',
+  elementUnderline: (isMobile, isTablet) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '-5px',
+    transform: isMobile ? 'translateX(-80px)' : isTablet ? 'translateX(-120px)' : 'translateX(-160px)',
   }),
 
-  featureTitle: (isMobile, isTablet) => ({
+  elementImage: (isMobile, isTablet) => ({
+    width: isMobile ? '200px' : isTablet ? '300px' : '400px',
+    height: 'auto',
+    objectFit: 'contain',
+  }),
+
+  // First Step Section Styles
+  firstStepSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '40px 20px' : isTablet ? '50px 40px' : '60px 60px',
+    backgroundColor: 'white',
+    marginTop: '-40px',
+  }),
+
+  firstStepContainer: (isMobile, isTablet) => ({
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    alignItems: 'center',
+    gap: isMobile ? '40px' : isTablet ? '60px' : '80px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  }),
+
+  firstStepImage: (isMobile, isTablet) => ({
+    flex: isMobile ? 'none' : '1',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: isMobile ? '0' : isTablet ? '20px' : '40px',
+  }),
+
+  firstStepImageImg: {
+    width: '100%',
+    maxWidth: '500px',
+    height: 'auto',
+    objectFit: 'contain',
+  },
+
+  firstStepContent: (isMobile, isTablet) => ({
+    flex: isMobile ? 'none' : '1',
+    textAlign: isMobile ? 'center' : 'right',
+  }),
+
+  firstStepTitle: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
-    fontSize: isMobile ? '20px' : isTablet ? '24px' : '28px',
-    color: '#1B2B4D',
+    fontSize: isMobile ? '24px' : isTablet ? '32px' : '40px',
+    lineHeight: isMobile ? '32px' : isTablet ? '40px' : '48px',
+    color: '#141F39',
     margin: '0 0 15px 0',
+    whiteSpace: 'nowrap',
   }),
 
-  featureText: (isMobile, isTablet) => ({
+  firstStepText: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 400,
-    fontSize: isMobile ? '16px' : isTablet ? '18px' : '20px',
-    color: '#666',
-    lineHeight: 1.6,
-    margin: 0,
+    fontSize: isMobile ? '18px' : isTablet ? '22px' : '26px',
+    lineHeight: isMobile ? '28px' : isTablet ? '32px' : '36px',
+    color: '#1B2B4D',
+    maxWidth: isMobile ? '100%' : '500px',
+  }),
+
+  // Second Step Section Styles
+  secondStepSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '40px 20px' : isTablet ? '50px 40px' : '60px 60px',
+    backgroundColor: 'white',
+    marginTop: '-20px',
+  }),
+
+  secondStepContainer: (isMobile, isTablet) => ({
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    alignItems: 'center',
+    gap: isMobile ? '40px' : isTablet ? '60px' : '80px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  }),
+
+  secondStepImage: (isMobile, isTablet) => ({
+    flex: isMobile ? 'none' : '1',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: isMobile ? '0' : isTablet ? '20px' : '40px',
+  }),
+
+  secondStepImageImg: {
+    width: '100%',
+    maxWidth: '500px',
+    height: 'auto',
+    objectFit: 'contain',
+  },
+
+  secondStepContent: (isMobile, isTablet) => ({
+    flex: isMobile ? 'none' : '1',
+    textAlign: isMobile ? 'center' : 'right',
+    direction: 'rtl',
+  }),
+
+  secondStepTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '24px' : isTablet ? '32px' : '40px',
+    lineHeight: isMobile ? '32px' : isTablet ? '40px' : '48px',
+    color: '#141F39',
+    margin: '0 0 15px 0',
+    whiteSpace: 'nowrap',
+    direction: 'rtl',
+    textAlign: 'right',
+  }),
+
+  secondStepText: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '18px' : isTablet ? '22px' : '26px',
+    lineHeight: isMobile ? '28px' : isTablet ? '32px' : '36px',
+    color: '#4F4F4F',
+    maxWidth: isMobile ? '100%' : '500px',
+    direction: 'rtl',
+    textAlign: 'right',
+  }),
+
+  // Third Step Section Styles
+  thirdStepSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '40px 20px' : isTablet ? '50px 40px' : '60px 60px',
+    backgroundColor: 'white',
+    marginTop: '-20px',
+  }),
+
+  thirdStepContainer: (isMobile, isTablet) => ({
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    alignItems: 'center',
+    gap: isMobile ? '40px' : isTablet ? '60px' : '80px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  }),
+
+  thirdStepImage: (isMobile, isTablet) => ({
+    flex: isMobile ? 'none' : '1',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: isMobile ? '0' : isTablet ? '20px' : '40px',
+  }),
+
+  thirdStepImageImg: {
+    width: '100%',
+    maxWidth: '500px',
+    height: 'auto',
+    objectFit: 'contain',
+  },
+
+  thirdStepContent: (isMobile, isTablet) => ({
+    flex: isMobile ? 'none' : '1',
+    textAlign: isMobile ? 'center' : 'right',
+    direction: 'rtl',
+  }),
+
+  thirdStepTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '24px' : isTablet ? '32px' : '40px',
+    lineHeight: isMobile ? '32px' : isTablet ? '40px' : '48px',
+    color: '#141F39',
+    margin: '0 0 15px 0',
+    whiteSpace: 'nowrap',
+    direction: 'rtl',
+    textAlign: 'right',
+  }),
+
+  thirdStepText: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '18px' : isTablet ? '22px' : '26px',
+    lineHeight: isMobile ? '28px' : isTablet ? '32px' : '36px',
+    color: '#4F4F4F',
+    maxWidth: isMobile ? '100%' : '500px',
+    direction: 'rtl',
+    textAlign: 'right',
   }),
   
 };
