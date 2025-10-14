@@ -45,7 +45,7 @@ const LandingPage = () => {
           {/* Text Container */}
           <div style={styles.textContainer(isMobile)}>
             <p style={styles.heroTitle1(isMobile)}>העוזר החכם שלך לתביעות </p>
-            <p style={styles.heroTitle2(isMobile)}>עובד בשבילך  ,  מדבר כמוך ! </p>
+            <p style={styles.heroTitle2(isMobile)}>עובד בשבילך , מדבר כמוך ! </p>
             <p style={styles.heroSubheading(isMobile)}>
               דואג לתביעות שלך דרך הוואטסאפ, 24/7
               {!isMobile && <br />}
@@ -73,7 +73,7 @@ const LandingPage = () => {
           {!isMobile && (
             <div style={styles.personImage(isTablet, width)}>
               <img 
-                src="/person image.png" 
+                src="/HeroPic.png" 
                 alt="Person"
                 style={styles.personImageImg}
                 onError={(e) => {
@@ -85,16 +85,6 @@ const LandingPage = () => {
             </div>
           )}
 
-          {/* Shape decoration */}
-          {!isMobile && width > 1200 && (
-            <div style={styles.shapeDecoration(width)}>
-              <svg viewBox="0 0 324 410" style={styles.shapeDecorationImg}>
-                <circle cx="162" cy="205" r="150" fill="#715DE3" opacity="0.15" />
-                <circle cx="200" cy="150" r="100" fill="#9888F4" opacity="0.2" />
-                <circle cx="120" cy="280" r="80" fill="#B8A8FF" opacity="0.15" />
-              </svg>
-            </div>
-          )}
 
           {/* Buttons Container */}
           <div style={styles.buttonsContainer(isMobile)}>
@@ -104,7 +94,7 @@ const LandingPage = () => {
                 onClick={handleStartClick}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(113, 93, 227, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(88, 204, 2, 0.3)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
@@ -117,21 +107,21 @@ const LandingPage = () => {
                 style={styles.btnSecondary(isMobile)}
                 onClick={handleDemoClick}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#FFC700';
-                  e.currentTarget.style.color = '#141F39';
+                  e.currentTarget.style.background = '#1CB0F6';
+                  e.currentTarget.style.color = 'white';
                   const playIcon = e.currentTarget.querySelector('.play-icon');
-                  if (playIcon) playIcon.style.background = '#141F39';
+                  if (playIcon) playIcon.style.background = 'white';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = '#FFC700';
+                  e.currentTarget.style.color = '#1CB0F6';
                   const playIcon = e.currentTarget.querySelector('.play-icon');
-                  if (playIcon) playIcon.style.background = '#FFC700';
+                  if (playIcon) playIcon.style.background = '#1CB0F6';
                 }}
               >
                 <span className="play-icon" style={styles.playIcon}>
-                  <svg width="10" height="12" viewBox="0 0 10 12" fill="#141F39" style={{marginRight: '2px'}}>
-                    <path d="M0 0 L10 6 L0 12 Z" />
+                  <svg width="10" height="12" viewBox="0 0 10 12" fill="white" style={{marginLeft: '2px'}}>
+                    <path d="M10 0 L0 6 L10 12 Z" />
                   </svg>
                 </span>
                 צפו בדמו
@@ -141,29 +131,64 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section style={styles.statsSection(isMobile)}>
-        <div style={styles.statsBackground}>
-          <img 
-            src="/BG2.png" 
-            alt=""
-            style={styles.statsBackgroundImg(isMobile, isTablet)} 
-            onError={(e) => {
-              // Fallback gradient background
-              e.target.style.display = 'none';
-              e.target.parentElement.style.background = 'linear-gradient(135deg, #715DE3 0%, #9888F4 50%, #5B8DEF 100%)';
-            }}
-          />
-        </div>
-        <div style={styles.statsContent(isMobile, isTablet)}>
-          <h2 style={styles.statsHeading(isMobile, isTablet)}>מה זה יעשה לעסק שלכם</h2>
-          <p style={styles.statsDescription(isMobile, isTablet)}>
-            הלקוחות שלכם מקבלים תשובה מדויקת בכל שעה, בלי לחכות
-            <br />
-            ולכם מתפנה המשאב היקר מכל - הזמן שלכם לספק שירות איכותי ולהתמקד בצמיחת העסק
-          </p>
+      {/* New Rectangle Section */}
+      <section style={styles.newRectangleSection(isMobile, isTablet)}>
+        <h2 style={styles.newSectionTitle(isMobile, isTablet)}>
+          מה זה יעשה לעסק שלכם
+        </h2>
+        <p style={styles.newSectionText(isMobile, isTablet)}>
+          הלקוחות שלכם מקבלים תשובה מדויקת בכל שעה, בלי לחכות.
+          <br />
+          ולכם מתפנה המשאב היקר מכל - הזמן שלכם לספק שירות איכותי ולהתמקד בצמיחת העסק
+        </p>
+      </section>
+
+      {/* Statistics Section */}
+      <section style={styles.statisticsSection(isMobile, isTablet)}>
+        <div style={styles.statisticsContainer(isMobile, isTablet)}>
+          <div style={styles.statCard(isMobile, isTablet)}>
+            <h3 style={styles.statNumber(isMobile, isTablet)}>2,847</h3>
+            <p style={styles.statLabel(isMobile, isTablet)}>תביעות שהוגשו</p>
+          </div>
+          <div style={styles.statCard(isMobile, isTablet)}>
+            <h3 style={styles.statNumber(isMobile, isTablet)}>24/7</h3>
+            <p style={styles.statLabel(isMobile, isTablet)}>זמינות מלאה</p>
+          </div>
+          <div style={styles.statCard(isMobile, isTablet)}>
+            <h3 style={styles.statNumber(isMobile, isTablet)}>5 דק'</h3>
+            <p style={styles.statLabel(isMobile, isTablet)}>זמן ממוצע להגשה</p>
+          </div>
+          <div style={styles.statCard(isMobile, isTablet)}>
+            <h3 style={styles.statNumber(isMobile, isTablet)}>98%</h3>
+            <p style={styles.statLabel(isMobile, isTablet)}>שביעות רצון</p>
+          </div>
         </div>
       </section>
+
+      {/* Features Section */}
+      <section style={styles.featuresSection(isMobile, isTablet)}>
+        <div style={styles.featuresContainer(isMobile, isTablet)}>
+          <h2 style={styles.featuresTitle(isMobile, isTablet)}>איך זה עובד?</h2>
+          <div style={styles.featuresGrid(isMobile, isTablet)}>
+            <div style={styles.featureCard(isMobile, isTablet)}>
+              <div style={styles.featureIcon(isMobile, isTablet)}>📱</div>
+              <h3 style={styles.featureTitle(isMobile, isTablet)}>שלח הודעה</h3>
+              <p style={styles.featureText(isMobile, isTablet)}>הלקוח שולח הודעה בוואטסאפ עם פרטי התביעה</p>
+            </div>
+            <div style={styles.featureCard(isMobile, isTablet)}>
+              <div style={styles.featureIcon(isMobile, isTablet)}>🤖</div>
+              <h3 style={styles.featureTitle(isMobile, isTablet)}>עיבוד אוטומטי</h3>
+              <p style={styles.featureText(isMobile, isTablet)}>הבוט מעבד את המידע ומכין את התביעה</p>
+            </div>
+            <div style={styles.featureCard(isMobile, isTablet)}>
+              <div style={styles.featureIcon(isMobile, isTablet)}>✅</div>
+              <h3 style={styles.featureTitle(isMobile, isTablet)}>הגשה מהירה</h3>
+              <p style={styles.featureText(isMobile, isTablet)}>התביעה מוגשת אוטומטית לסוכנות הביטוח</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
@@ -224,7 +249,7 @@ const styles = {
   navMenu: {
     color: '#141F39',
     fontSize: '16px',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Varela Round', sans-serif",
     fontWeight: 500,
     lineHeight: '24px',
     width: '560px',
@@ -238,6 +263,7 @@ const styles = {
     left: 0,
     width: isMobile ? '100%' : '994.572px',
     height: isMobile ? 'auto' : '334px',
+    marginBottom: isMobile ? '30px' : '0',
   }),
   
   heroTitle1: (isMobile) => ({
@@ -245,12 +271,12 @@ const styles = {
     left: isMobile ? 'auto' : '252.572px',
     top: 0,
     padding: '10px',
-    color: '#141F39',
+    color: '#4B4B4B',
     fontSize: isMobile ? '40px' : '70px',
-    fontFamily: "'Nunito', sans-serif",
-    fontWeight: 600,
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
     lineHeight: isMobile ? '48px' : '80px',
-    letterSpacing: '-5px',
+    letterSpacing: '-2px',
     whiteSpace: isMobile ? 'normal' : 'pre',
     textAlign: 'right',
     marginBottom: isMobile ? '20px' : 0,
@@ -261,12 +287,12 @@ const styles = {
     left: 0,
     top: isMobile ? 'auto' : '96px',
     padding: '10px',
-    color: '#141F39',
+    color: '#4B4B4B',
     fontSize: isMobile ? '40px' : '70px',
-    fontFamily: "'Nunito', sans-serif",
-    fontWeight: 600,
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
     lineHeight: isMobile ? '48px' : '80px',
-    letterSpacing: '-5px',
+    letterSpacing: '-2px',
     whiteSpace: isMobile ? 'normal' : 'pre',
     textAlign: 'right',
     marginBottom: isMobile ? '20px' : 0,
@@ -280,7 +306,7 @@ const styles = {
     opacity: 0.70,
     color: '#4F4F4F',
     fontSize: isMobile ? '20px' : '30px',
-    fontFamily: "'Nunito Sans', sans-serif",
+    fontFamily: "'Varela Round', sans-serif",
     fontWeight: 600,
     lineHeight: isMobile ? '28px' : '32px',
     textAlign: 'right',
@@ -310,8 +336,8 @@ const styles = {
   
   personImage: (isTablet, width) => ({
     position: 'absolute',
-    right: width <= 1200 ? '20px' : '-50px',
-    top: '120px',
+    right: width <= 1200 ? '100px' : '30px',
+    top: '160px',
     width: width <= 1200 ? '400px' : '600px',
     height: width <= 1200 ? '400px' : '600px',
     zIndex: 10,
@@ -323,21 +349,6 @@ const styles = {
     objectFit: 'contain',
   },
   
-  shapeDecoration: (width) => ({
-    position: 'absolute',
-    left: width < 1600 ? 'auto' : '1049.21px',
-    right: width < 1600 ? '-200px' : 'auto',
-    top: '266px',
-    width: '323.79px',
-    height: '410px',
-    zIndex: 1,
-    opacity: 0.4,
-  }),
-  
-  shapeDecorationImg: {
-    width: '100%',
-    height: '100%',
-  },
   
   buttonsContainer: (isMobile) => ({
     position: isMobile ? 'static' : 'absolute',
@@ -359,12 +370,12 @@ const styles = {
   btnPrimary: (isMobile) => ({
     width: isMobile ? '100%' : '237px',
     height: '62px',
-    background: 'linear-gradient(180deg, #9888F4 0%, #715DE3 100%)',
+    background: '#58CC02',
     borderRadius: '12px',
     border: 'none',
     color: 'white',
     fontSize: '18px',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Varela Round', sans-serif",
     fontWeight: 600,
     textAlign: 'center',
     cursor: 'pointer',
@@ -378,11 +389,11 @@ const styles = {
     width: isMobile ? '100%' : '190px',
     height: '62px',
     borderRadius: '12px',
-    border: '1.8px solid #FFC700',
+    border: '1.8px solid #1CB0F6',
     background: 'transparent',
-    color: '#FFC700',
+    color: '#1CB0F6',
     fontSize: '18px',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Varela Round', sans-serif",
     fontWeight: 600,
     textAlign: 'center',
     cursor: 'pointer',
@@ -397,7 +408,7 @@ const styles = {
   playIcon: {
     width: '28px',
     height: '28px',
-    background: '#FFC700',
+    background: '#1CB0F6',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
@@ -406,74 +417,139 @@ const styles = {
     left: '15px',
     transition: 'background 0.3s ease',
   },
-  
-  statsSection: (isMobile) => ({
-    position: 'relative',
+
+  newRectangleSection: (isMobile, isTablet) => ({
     width: '100%',
-    minHeight: isMobile ? '400px' : '600px',
-    marginTop: 0,
-    overflow: 'hidden',
+    backgroundColor: '#DFF0F5',
+    padding: isMobile ? '40px 20px 40px 20px' : isTablet ? '60px 40px 60px 40px' : '80px 60px 80px 60px',
+    marginTop: isMobile ? '40px' : '60px',
+    minHeight: isMobile ? '200px' : isTablet ? '250px' : '300px',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-  }),
-  
-  statsBackground: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
-    zIndex: 0,
-  },
-  
-  statsBackgroundImg: (isMobile, isTablet) => ({
-    position: 'absolute',
-    left: '50%',
-    top: isMobile ? '-20%' : isTablet ? '-30%' : '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '100%',
-    height: 'auto',
-    minHeight: '100%',
-    objectFit: 'cover',
-    display: 'block',
-  }),
-  
-  statsContent: (isMobile, isTablet) => ({
-    position: 'relative',
-    zIndex: 10,
-    padding: isMobile ? '60px 20px' : isTablet ? '60px 60px' : '100px 120px',
     textAlign: 'center',
-    color: 'white',
+    boxSizing: 'border-box',
+  }),
+
+  newSectionTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '40px' : isTablet ? '56px' : '72px',
+    lineHeight: isMobile ? '48px' : isTablet ? '64px' : '80px',
+    color: '#1B2B4D',
+    margin: 0,
+    textAlign: 'center',
+  }),
+
+  newSectionText: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '24px' : isTablet ? '28px' : '32px',
+    lineHeight: isMobile ? '32px' : isTablet ? '38px' : '44px',
+    color: '#1B2B4D',
+    margin: isMobile ? '20px 0 0 0' : '30px 0 0 0',
+    textAlign: 'center',
+    maxWidth: isMobile ? '100%' : '1000px',
+  }),
+
+  // Statistics Section
+  statisticsSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
+    backgroundColor: '#f8f9ff',
+  }),
+
+  statisticsContainer: (isMobile, isTablet) => ({
     maxWidth: '1200px',
-    transform: isMobile ? 'none' : 'rotate(-2deg)',
-    transformOrigin: 'center',
-  }),
-  
-  statsHeading: (isMobile, isTablet) => ({
-    color: 'white',
-    fontSize: isMobile ? '40px' : isTablet ? '48px' : '64px',
-    fontFamily: "'Nunito', sans-serif",
-    fontWeight: 600,
-    lineHeight: 'normal',
-    marginBottom: '30px',
-    textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
-    transform: isMobile ? 'none' : 'rotate(-1deg)',
-    transformOrigin: 'center',
-  }),
-  
-  statsDescription: (isMobile, isTablet) => ({
-    color: 'white',
-    fontSize: isMobile ? '20px' : isTablet ? '22px' : '28px',
-    fontFamily: "'Nunito Sans', sans-serif",
-    fontWeight: 600,
-    lineHeight: 1.6,
-    maxWidth: '1000px',
     margin: '0 auto',
-    textShadow: '1px 1px 6px rgba(0, 0, 0, 0.5)',
-    transform: isMobile ? 'none' : 'rotate(-1deg)',
-    transformOrigin: 'center',
+    display: 'grid',
+    gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+    gap: isMobile ? '20px' : '40px',
   }),
+
+  statCard: (isMobile, isTablet) => ({
+    backgroundColor: 'white',
+    borderRadius: '16px',
+    padding: isMobile ? '20px' : '30px',
+    textAlign: 'center',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgba(0, 0, 0, 0.05)',
+  }),
+
+  statNumber: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px',
+    color: '#1B2B4D',
+    margin: '0 0 10px 0',
+  }),
+
+  statLabel: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px',
+    color: '#666',
+    margin: 0,
+  }),
+
+  // Features Section
+  featuresSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
+    backgroundColor: 'white',
+  }),
+
+  featuresContainer: (isMobile, isTablet) => ({
+    maxWidth: '1200px',
+    margin: '0 auto',
+    textAlign: 'center',
+  }),
+
+  featuresTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '32px' : isTablet ? '48px' : '64px',
+    color: '#1B2B4D',
+    margin: '0 0 60px 0',
+  }),
+
+  featuresGrid: (isMobile, isTablet) => ({
+    display: 'grid',
+    gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+    gap: isMobile ? '30px' : '40px',
+  }),
+
+  featureCard: (isMobile, isTablet) => ({
+    backgroundColor: '#f8f9ff',
+    borderRadius: '20px',
+    padding: isMobile ? '30px 20px' : '40px 30px',
+    textAlign: 'center',
+    border: '1px solid rgba(0, 0, 0, 0.05)',
+  }),
+
+  featureIcon: (isMobile, isTablet) => ({
+    fontSize: isMobile ? '40px' : '48px',
+    marginBottom: '20px',
+  }),
+
+  featureTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '20px' : isTablet ? '24px' : '28px',
+    color: '#1B2B4D',
+    margin: '0 0 15px 0',
+  }),
+
+  featureText: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '16px' : isTablet ? '18px' : '20px',
+    color: '#666',
+    lineHeight: 1.6,
+    margin: 0,
+  }),
+  
 };
 
 export default LandingPage;
