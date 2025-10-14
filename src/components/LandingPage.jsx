@@ -44,8 +44,31 @@ const LandingPage = () => {
 
           {/* Text Container */}
           <div style={styles.textContainer(isMobile)}>
-            <p style={styles.heroTitle1(isMobile)}>העוזר החכם שלך לתביעות </p>
-            <p style={styles.heroTitle2(isMobile)}>עובד בשבילך , מדבר כמוך ! </p>
+            {isMobile ? (
+              <div style={styles.mobileTitleContainer}>
+                <h1 style={styles.mobileHeroTitle}>
+                  העוזר החכם שלך לתביעות עובד בשבילך , מדבר כמוך !
+                </h1>
+                {/* Yellow underline after "כמוך" in mobile */}
+                <div style={styles.yellowUnderlineAfterTitle}>
+                  <img 
+                    src="/yellow mark.png" 
+                    alt=""
+                    style={styles.yellowUnderlineImgMobile}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<svg viewBox="0 0 120 12" style="width: 120px; height: 12px;"><path d="M10 6 Q30 3, 60 6 T110 6" stroke="#FFC700" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/></svg>';
+                    }}
+                  />
+                </div>
+              </div>
+            ) : (
+              <>
+                <p style={styles.heroTitle1(isMobile)}>העוזר החכם שלך לתביעות </p>
+                <p style={styles.heroTitle2(isMobile)}>עובד בשבילך , מדבר כמוך ! </p>
+              </>
+            )}
+            
             <p style={styles.heroSubheading(isMobile)}>
               דואג לתביעות שלך דרך הוואטסאפ, 24/7
               {!isMobile && <br />}
@@ -53,37 +76,20 @@ const LandingPage = () => {
             </p>
           </div>
 
-          {/* Yellow underline */}
-          {!isMobile && (
-            <div style={styles.yellowUnderline}>
-              <img 
-                src="/yellow mark.png" 
-                alt=""
-                style={styles.yellowUnderlineImg}
-                onError={(e) => {
-                  // Fallback SVG yellow underline
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<svg viewBox="0 0 263 55" style="position: absolute; bottom: 0; left: 0; right: -16.95%; top: 0; width: 116.95%; height: 100%;"><path d="M5 45 Q60 30, 120 35 T250 45" stroke="#FFC700" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.8"/></svg>';
-                }}
-              />
-            </div>
-          )}
 
           {/* Person Image */}
-          {!isMobile && (
-            <div style={styles.personImage(isTablet, width)}>
-              <img 
-                src="/HeroPic.png" 
-                alt="Person"
-                style={styles.personImageImg}
-                onError={(e) => {
-                  // Fallback illustration if image not found
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<div style="width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, #E8E0FF 0%, #D4C5FF 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(113, 93, 227, 0.3);"><svg style="width: 60%; height: 60%; opacity: 0.6;" fill="#715DE3" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg></div>';
-                }}
-              />
-            </div>
-          )}
+          <div style={styles.personImage(isMobile, isTablet, width)}>
+            <img 
+              src="/HeroPic.png" 
+              alt="Person"
+              style={styles.personImageImg}
+              onError={(e) => {
+                // Fallback illustration if image not found
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = '<div style="width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, #E8E0FF 0%, #D4C5FF 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(113, 93, 227, 0.3);"><svg style="width: 60%; height: 60%; opacity: 0.6;" fill="#715DE3" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg></div>';
+              }}
+            />
+          </div>
 
 
           {/* Buttons Container */}
@@ -342,77 +348,124 @@ const styles = {
     position: isMobile ? 'static' : 'absolute',
     left: isMobile ? 'auto' : '252.572px',
     top: 0,
-    padding: '10px',
+    padding: isMobile ? '0 20px' : '10px',
     color: '#4B4B4B',
-    fontSize: isMobile ? '40px' : '70px',
+    fontSize: isMobile ? '32px' : '70px',
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
-    lineHeight: isMobile ? '48px' : '80px',
-    letterSpacing: '-2px',
+    lineHeight: isMobile ? '40px' : '80px',
+    letterSpacing: isMobile ? '-1px' : '-2px',
     whiteSpace: isMobile ? 'normal' : 'pre',
-    textAlign: 'right',
+    textAlign: isMobile ? 'center' : 'right',
     marginBottom: isMobile ? '20px' : 0,
+    direction: 'rtl',
   }),
   
   heroTitle2: (isMobile) => ({
     position: isMobile ? 'static' : 'absolute',
     left: 0,
     top: isMobile ? 'auto' : '96px',
-    padding: '10px',
+    padding: isMobile ? '0 20px' : '10px',
     color: '#4B4B4B',
-    fontSize: isMobile ? '40px' : '70px',
+    fontSize: isMobile ? '32px' : '70px',
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
-    lineHeight: isMobile ? '48px' : '80px',
-    letterSpacing: '-2px',
+    lineHeight: isMobile ? '40px' : '80px',
+    letterSpacing: isMobile ? '-1px' : '-2px',
     whiteSpace: isMobile ? 'normal' : 'pre',
-    textAlign: 'right',
+    textAlign: isMobile ? 'center' : 'right',
     marginBottom: isMobile ? '20px' : 0,
+    direction: 'rtl',
   }),
   
   heroSubheading: (isMobile) => ({
     position: isMobile ? 'static' : 'absolute',
     left: isMobile ? 'auto' : '203.714px',
     top: isMobile ? 'auto' : '250px',
-    padding: '10px',
+    padding: isMobile ? '0 20px' : '10px',
     opacity: 0.70,
     color: '#4F4F4F',
-    fontSize: isMobile ? '20px' : '30px',
+    fontSize: isMobile ? '18px' : '30px',
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 600,
-    lineHeight: isMobile ? '28px' : '32px',
-    textAlign: 'right',
+    lineHeight: isMobile ? '26px' : '32px',
+    textAlign: isMobile ? 'center' : 'right',
     whiteSpace: isMobile ? 'normal' : 'pre',
-    marginBottom: isMobile ? '40px' : 0,
+    marginBottom: isMobile ? '10px' : 0,
+    direction: 'rtl',
   }),
   
-  yellowUnderline: {
-    position: 'absolute',
-    left: '19.875px',
-    top: '333px',
-    width: '262.51px',
-    height: '55px',
+  yellowUnderline: (isMobile) => ({
+    position: isMobile ? 'static' : 'absolute',
+    left: isMobile ? 'auto' : '19.875px',
+    top: isMobile ? 'auto' : '333px',
+    width: isMobile ? '80%' : '262.51px',
+    height: isMobile ? '30px' : '55px',
     pointerEvents: 'none',
-  },
+    margin: isMobile ? '10px auto 0 auto' : '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }),
   
-  yellowUnderlineImg: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: '-16.95%',
-    top: 0,
-    width: '116.95%',
+  yellowUnderlineImg: (isMobile) => ({
+    position: isMobile ? 'static' : 'absolute',
+    bottom: isMobile ? 'auto' : 0,
+    left: isMobile ? 'auto' : 0,
+    right: isMobile ? 'auto' : '-16.95%',
+    top: isMobile ? 'auto' : 0,
+    width: isMobile ? '100%' : '116.95%',
+    height: isMobile ? '100%' : '100%',
+    objectFit: 'contain',
+  }),
+
+  // Mobile yellow underline after title
+  yellowUnderlineAfterTitle: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '2px auto 10px auto',
+    width: '120px',
+    height: '12px',
+  },
+
+  yellowUnderlineImgMobile: {
+    width: '100%',
     height: '100%',
     objectFit: 'contain',
   },
+
+  // Mobile title container
+  mobileTitleContainer: {
+    textAlign: 'center',
+    marginBottom: '20px',
+  },
+
+  mobileHeroTitle: {
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: '28px',
+    lineHeight: '36px',
+    letterSpacing: '-1px',
+    color: '#4B4B4B',
+    margin: '0 0 10px 0',
+    direction: 'rtl',
+    textAlign: 'center',
+    padding: '0 20px',
+  },
   
-  personImage: (isTablet, width) => ({
-    position: 'absolute',
-    right: width <= 1200 ? '-20px' : '-50px',
-    top: '160px',
-    width: width <= 1200 ? '400px' : '600px',
-    height: width <= 1200 ? '400px' : '600px',
+  personImage: (isMobile, isTablet, width) => ({
+    position: isMobile ? 'static' : 'absolute',
+    right: isMobile ? 'auto' : (width <= 1200 ? '-20px' : '-50px'),
+    top: isMobile ? 'auto' : '160px',
+    width: isMobile ? '100%' : (width <= 1200 ? '400px' : '600px'),
+    height: isMobile ? '280px' : (width <= 1200 ? '400px' : '600px'),
     zIndex: 10,
+    marginTop: isMobile ? '5px' : '0',
+    marginBottom: isMobile ? '5px' : '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   }),
   
   personImageImg: {
