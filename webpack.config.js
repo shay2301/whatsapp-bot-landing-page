@@ -43,6 +43,8 @@ module.exports = {
     port: 3001,
     hot: true,
     open: true,
+    host: '0.0.0.0', // Allow access from any IP
+    allowedHosts: 'all', // Allow all hosts
   },
   resolve: {
     extensions: ['.js', '.jsx'],

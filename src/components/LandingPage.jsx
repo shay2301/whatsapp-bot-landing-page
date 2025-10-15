@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useResponsive } from '../hooks/useResponsive';
 
 const LandingPage = () => {
   const { isMobile, isTablet, width } = useResponsive();
+  
+  // FAQ state management
+  const [openFAQ, setOpenFAQ] = useState(null);
   
   // Calculate responsive scale for tablets and medium screens
   const isSmallScreen = width <= 1400 && width > 768;
@@ -13,6 +16,10 @@ const LandingPage = () => {
 
   const handleDemoClick = () => {
     window.location.href = 'chat-animation.html';
+  };
+
+  const toggleFAQ = (index) => {
+    setOpenFAQ(openFAQ === index ? null : index);
   };
 
   return (
@@ -64,8 +71,8 @@ const LandingPage = () => {
               </div>
             ) : (
               <>
-                <p style={styles.heroTitle1(isMobile)}>העוזר החכם שלך לתביעות </p>
-                <p style={styles.heroTitle2(isMobile)}>עובד בשבילך , מדבר כמוך ! </p>
+                <h1 style={styles.heroTitle1(isMobile)}>העוזר החכם שלך לתביעות </h1>
+                <h1 style={styles.heroTitle2(isMobile)}>עובד בשבילך , מדבר כמוך ! </h1>
               </>
             )}
             
@@ -137,16 +144,19 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* New Rectangle Section */}
-      <section style={styles.newRectangleSection(isMobile, isTablet)}>
-        <h2 style={styles.newSectionTitle(isMobile, isTablet)}>
+      {/* Business Benefits Section */}
+      <section style={styles.businessBenefitsSection(isMobile, isTablet)}>
+        <h2 style={styles.businessBenefitsTitle(isMobile, isTablet)}>
           מה זה יעשה לעסק שלכם
         </h2>
-        <p style={styles.newSectionText(isMobile, isTablet)}>
-          הלקוחות שלכם מקבלים תשובה מדויקת בכל שעה, בלי לחכות.
-          <br />
-          ולכם מתפנה המשאב היקר מכל - הזמן שלכם לספק שירות איכותי ולהתמקד בצמיחת העסק
-        </p>
+        <div style={styles.businessBenefitsContent(isMobile, isTablet)}>
+          <p style={styles.businessBenefitsText(isMobile, isTablet)}>
+            הלקוחות שלכם מקבלים תשובה מדויקת בכל שעה, בלי לחכות.
+          </p>
+          <p style={styles.businessBenefitsText(isMobile, isTablet)}>
+            ולכם מתפנה המשאב היקר מכל - הזמן שלכם לספק שירות איכותי ולהתמקד בצמיחת העסק
+          </p>
+        </div>
       </section>
 
         {/* Simple Title Section */}
@@ -171,72 +181,147 @@ const LandingPage = () => {
         {/* First Step Section */}
         <section style={styles.firstStepSection(isMobile, isTablet)}>
           <div style={styles.firstStepContainer(isMobile, isTablet)}>
-            <div style={styles.firstStepImage(isMobile, isTablet)}>
-              <img
-                src="/firstStep.png"
-                alt="First Step"
-                style={styles.firstStepImageImg}
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
-            <div style={styles.firstStepContent(isMobile, isTablet)}>
-              <h3 style={styles.firstStepTitle(isMobile, isTablet)}>
-                מתאימים את הסוכן לעסק שלך
-              </h3>
-              <p style={styles.firstStepText(isMobile, isTablet)}>
-                אנחנו מחברים את הבוט לעסק שלך, מגדירים את ההודעות, הטון והשלבים כך שיתאים בדיוק לאופן שבו אתה עובד ומדבר עם הלקוחות שלך.
-              </p>
-            </div>
+            {isMobile ? (
+              <>
+                <div style={styles.firstStepImage(isMobile, isTablet)}>
+                  <img
+                    src="/firstStep.png"
+                    alt="מתאימים את הסוכן לעסק שלך - שלב ראשון"
+                    style={styles.firstStepImageImg}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div style={styles.firstStepContent(isMobile, isTablet)}>
+                  <h2 style={styles.firstStepTitle(isMobile, isTablet)}>
+                    מתאימים את הסוכן לעסק שלך
+                  </h2>
+                  <p style={styles.firstStepText(isMobile, isTablet)}>
+                    אנחנו מחברים את הבוט לעסק שלך, מגדירים את ההודעות, הטון והשלבים כך שיתאים בדיוק לאופן שבו אתה עובד ומדבר עם הלקוחות שלך.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={styles.firstStepImage(isMobile, isTablet)}>
+                  <img
+                    src="/firstStep.png"
+                    alt="מתאימים את הסוכן לעסק שלך - שלב ראשון"
+                    style={styles.firstStepImageImg}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div style={styles.firstStepContent(isMobile, isTablet)}>
+                  <h2 style={styles.firstStepTitle(isMobile, isTablet)}>
+                    מתאימים את הסוכן לעסק שלך
+                  </h2>
+                  <p style={styles.firstStepText(isMobile, isTablet)}>
+                    אנחנו מחברים את הבוט לעסק שלך, מגדירים את ההודעות, הטון והשלבים כך שיתאים בדיוק לאופן שבו אתה עובד ומדבר עם הלקוחות שלך.
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </section>
 
         {/* Second Step Section */}
         <section style={styles.secondStepSection(isMobile, isTablet)}>
           <div style={styles.secondStepContainer(isMobile, isTablet)}>
-            <div style={styles.secondStepContent(isMobile, isTablet)}>
-              <h3 style={styles.secondStepTitle(isMobile, isTablet)}>
-                טיפול אוטומטי בפניות
-              </h3>
-              <p style={styles.secondStepText(isMobile, isTablet)}>
-                המערכת מזהה כשמדובר בתביעה ומתחילה תהליך אוטומטי של שאלות ואיסוף נתונים, בלי שתצטרך להתערב.
-              </p>
-            </div>
-            <div style={styles.secondStepImage(isMobile, isTablet)}>
-              <img
-                src="/step2.png"
-                alt="Second Step"
-                style={styles.secondStepImageImg}
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
+            {isMobile ? (
+              <>
+                <div style={styles.secondStepImage(isMobile, isTablet)}>
+                  <img
+                    src="/step2.png"
+                    alt="טיפול אוטומטי בפניות - שלב שני"
+                    style={styles.secondStepImageImg}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div style={styles.secondStepContent(isMobile, isTablet)}>
+                  <h2 style={styles.secondStepTitle(isMobile, isTablet)}>
+                    טיפול אוטומטי בפניות
+                  </h2>
+                  <p style={styles.secondStepText(isMobile, isTablet)}>
+                    המערכת מזהה כשמדובר בתביעה ומתחילה תהליך אוטומטי של שאלות ואיסוף נתונים, בלי שתצטרך להתערב.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={styles.secondStepContent(isMobile, isTablet)}>
+                  <h2 style={styles.secondStepTitle(isMobile, isTablet)}>
+                    טיפול אוטומטי בפניות
+                  </h2>
+                  <p style={styles.secondStepText(isMobile, isTablet)}>
+                    המערכת מזהה כשמדובר בתביעה ומתחילה תהליך אוטומטי של שאלות ואיסוף נתונים, בלי שתצטרך להתערב.
+                  </p>
+                </div>
+                <div style={styles.secondStepImage(isMobile, isTablet)}>
+                  <img
+                    src="/step2.png"
+                    alt="טיפול אוטומטי בפניות - שלב שני"
+                    style={styles.secondStepImageImg}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              </>
+            )}
           </div>
         </section>
 
         {/* Third Step Section */}
         <section style={styles.thirdStepSection(isMobile, isTablet)}>
           <div style={styles.thirdStepContainer(isMobile, isTablet)}>
-            <div style={styles.thirdStepImage(isMobile, isTablet)}>
-              <img
-                src="/STEP3.png"
-                alt="Third Step"
-                style={styles.thirdStepImageImg}
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
-            <div style={styles.thirdStepContent(isMobile, isTablet)}>
-              <h3 style={styles.thirdStepTitle(isMobile, isTablet)}>
-                אתה מקבל הכול מוכן
-              </h3>
-              <p style={styles.thirdStepText(isMobile, isTablet)}>
-                בסוף כל תהליך מחכה לך תיק תביעה מסודר עם כל הפרטים, המסמכים והנתונים מוכן לשליחה בלחיצה אחת
-              </p>
-            </div>
+            {isMobile ? (
+              <>
+                <div style={styles.thirdStepImage(isMobile, isTablet)}>
+                  <img
+                    src="/STEP3.png"
+                    alt="אתה מקבל הכול מוכן - שלב שלישי"
+                    style={styles.thirdStepImageImg}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div style={styles.thirdStepContent(isMobile, isTablet)}>
+                  <h2 style={styles.thirdStepTitle(isMobile, isTablet)}>
+                    אתה מקבל הכול מוכן
+                  </h2>
+                  <p style={styles.thirdStepText(isMobile, isTablet)}>
+                    בסוף כל תהליך מחכה לך תיק תביעה מסודר עם כל הפרטים, המסמכים והנתונים מוכן לשליחה בלחיצה אחת
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={styles.thirdStepImage(isMobile, isTablet)}>
+                  <img
+                    src="/STEP3.png"
+                    alt="אתה מקבל הכול מוכן - שלב שלישי"
+                    style={styles.thirdStepImageImg}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div style={styles.thirdStepContent(isMobile, isTablet)}>
+                  <h2 style={styles.thirdStepTitle(isMobile, isTablet)}>
+                    אתה מקבל הכול מוכן
+                  </h2>
+                  <p style={styles.thirdStepText(isMobile, isTablet)}>
+                    בסוף כל תהליך מחכה לך תיק תביעה מסודר עם כל הפרטים, המסמכים והנתונים מוכן לשליחה בלחיצה אחת
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </section>
 
@@ -247,23 +332,81 @@ const LandingPage = () => {
           </h2>
           <div style={styles.numbersContainer(isMobile, isTablet)}>
             <div style={styles.numberItem(isMobile, isTablet)}>
-              <div style={styles.numberMain}>מידי</div>
-              <h3 style={styles.numberSubtitle}>זמן תגובה ללקוח</h3>
-              <p style={styles.numberHighlight}>מ-3 שעות למענה מידי</p>
-              <p style={styles.numberSubtext}>+100% שביעות רצון</p>
+              <div style={styles.numberMain(isMobile, isTablet)}>מידי</div>
+              <h3 style={styles.numberSubtitle(isMobile, isTablet)}>זמן תגובה ללקוח</h3>
+              <p style={styles.numberHighlight(isMobile, isTablet)}>מ-3 שעות למענה מידי</p>
+              <p style={styles.numberSubtext(isMobile, isTablet)}>+100% שביעות רצון</p>
             </div>
             <div style={styles.numberItem(isMobile, isTablet)}>
-              <div style={styles.numberMain}>3 דק׳</div>
-              <h3 style={styles.numberSubtitle}>זמן תפעול ממוצע לתביעה</h3>
-              <p style={styles.numberHighlight}>מ-30 דקות ל-3 דקות</p>
-              <p style={styles.numberSubtext}>90% פחות זמן עבודה</p>
+              <div style={styles.numberMain(isMobile, isTablet)}>3 דק׳</div>
+              <h3 style={styles.numberSubtitle(isMobile, isTablet)}>זמן תפעול ממוצע לתביעה</h3>
+              <p style={styles.numberHighlight(isMobile, isTablet)}>מ-30 דקות ל-3 דקות</p>
+              <p style={styles.numberSubtext(isMobile, isTablet)}>90% פחות זמן עבודה</p>
             </div>
             <div style={styles.numberItem(isMobile, isTablet)}>
-              <div style={styles.numberMain}>9 שעות</div>
-              <h3 style={styles.numberSubtitle}>שעות שנחסכות חודשית</h3>
-              <p style={styles.numberHighlight}>מ-10 ל-1 שעה בחודש</p>
-              <p style={styles.numberSubtext}>שבוע עבודה שלם בשנה</p>
+              <div style={styles.numberMain(isMobile, isTablet)}>9 שעות</div>
+              <h3 style={styles.numberSubtitle(isMobile, isTablet)}>שעות שנחסכות חודשית</h3>
+              <p style={styles.numberHighlight(isMobile, isTablet)}>מ-10 ל-1 שעה בחודש</p>
+              <p style={styles.numberSubtext(isMobile, isTablet)}>שבוע עבודה שלם בשנה</p>
             </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section style={styles.faqSection(isMobile, isTablet)}>
+          <h2 style={styles.faqTitle(isMobile, isTablet)}>
+            תשאלו אותנו
+          </h2>
+          <div style={styles.faqUnderline(isMobile, isTablet)}>
+            <img
+              src="/Element.png"
+              alt=""
+              style={styles.faqElementImage(isMobile, isTablet)}
+              onError={(e) => {
+                // Fallback SVG if image not found
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = '<svg viewBox="0 0 200 20" style="width: 200px; height: 20px;"><path d="M10 10 Q50 5, 100 10 T190 10" stroke="#FFC700" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
+              }}
+            />
+          </div>
+          
+          {/* FAQ Questions */}
+          <div style={styles.faqContainer(isMobile, isTablet)}>
+            {[
+              "איך הבוט עובד?",
+              "כמה זמן לוקח להגדיר את הבוט?",
+              "האם הבוט יכול לטפל בכל סוגי התביעות?",
+              "מה העלות של השירות?"
+            ].map((question, index) => (
+              <div key={index} style={styles.faqItem(isMobile, isTablet)}>
+                <div 
+                  style={styles.faqQuestion(isMobile, isTablet)}
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <span style={styles.faqQuestionText(isMobile, isTablet)}>
+                    {question}
+                  </span>
+                  <div style={styles.faqIcon(isMobile, isTablet, openFAQ === index)}>
+                    {openFAQ === index ? (
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="#4B4B4B">
+                        <path d="M7.5 12.5 L12.5 7.5 L17.5 12.5" stroke="#4B4B4B" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="#4B4B4B">
+                        <path d="M12.5 7.5 L7.5 12.5 L12.5 17.5" stroke="#4B4B4B" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                  </div>
+                </div>
+                {openFAQ === index && (
+                  <div style={styles.faqAnswer(isMobile, isTablet)}>
+                    <p style={styles.faqAnswerText(isMobile, isTablet)}>
+                      תוכן התשובה יופיע כאן...
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -391,7 +534,7 @@ const styles = {
     lineHeight: isMobile ? '26px' : '32px',
     textAlign: isMobile ? 'center' : 'right',
     whiteSpace: isMobile ? 'normal' : 'pre',
-    marginBottom: isMobile ? '10px' : 0,
+    marginBottom: isMobile ? '0px' : 0,
     direction: 'rtl',
   }),
   
@@ -459,10 +602,10 @@ const styles = {
     right: isMobile ? 'auto' : (width <= 1200 ? '-20px' : '-50px'),
     top: isMobile ? 'auto' : '160px',
     width: isMobile ? '100%' : (width <= 1200 ? '400px' : '600px'),
-    height: isMobile ? '280px' : (width <= 1200 ? '400px' : '600px'),
+    height: isMobile ? '320px' : (width <= 1200 ? '400px' : '600px'),
     zIndex: 10,
-    marginTop: isMobile ? '5px' : '0',
-    marginBottom: isMobile ? '5px' : '0',
+    marginTop: isMobile ? '0px' : '0',
+    marginBottom: isMobile ? '0px' : '0',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -543,12 +686,12 @@ const styles = {
     transition: 'background 0.3s ease',
   },
 
-  newRectangleSection: (isMobile, isTablet) => ({
+  // Business Benefits Section - SEO optimized
+  businessBenefitsSection: (isMobile, isTablet) => ({
     width: '100%',
     backgroundColor: '#DFF0F5',
-    padding: isMobile ? '40px 20px 40px 20px' : isTablet ? '60px 40px 60px 40px' : '80px 60px 80px 60px',
-    marginTop: isMobile ? '40px' : '60px',
-    minHeight: isMobile ? '200px' : isTablet ? '250px' : '300px',
+    padding: isMobile ? '50px 20px' : isTablet ? '70px 40px' : '90px 60px',
+    marginTop: isMobile ? '30px' : '50px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -557,25 +700,33 @@ const styles = {
     boxSizing: 'border-box',
   }),
 
-  newSectionTitle: (isMobile, isTablet) => ({
+  businessBenefitsTitle: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
-    fontSize: isMobile ? '40px' : isTablet ? '56px' : '72px',
-    lineHeight: isMobile ? '48px' : isTablet ? '64px' : '80px',
+    fontSize: isMobile ? '32px' : isTablet ? '48px' : '64px',
+    lineHeight: isMobile ? '40px' : isTablet ? '56px' : '72px',
+    color: '#1B2B4D',
+    margin: '0 0 30px 0',
+    textAlign: 'center',
+    direction: 'rtl',
+  }),
+
+  businessBenefitsContent: (isMobile, isTablet) => ({
+    maxWidth: isMobile ? '100%' : '900px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: isMobile ? '15px' : '20px',
+  }),
+
+  businessBenefitsText: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '18px' : isTablet ? '22px' : '26px',
+    lineHeight: isMobile ? '28px' : isTablet ? '32px' : '36px',
     color: '#1B2B4D',
     margin: 0,
     textAlign: 'center',
-  }),
-
-  newSectionText: (isMobile, isTablet) => ({
-    fontFamily: "'Varela Round', sans-serif",
-    fontWeight: 400,
-    fontSize: isMobile ? '24px' : isTablet ? '28px' : '32px',
-    lineHeight: isMobile ? '32px' : isTablet ? '38px' : '44px',
-    color: '#1B2B4D',
-    margin: isMobile ? '20px 0 0 0' : '30px 0 0 0',
-    textAlign: 'center',
-    maxWidth: isMobile ? '100%' : '1000px',
+    direction: 'rtl',
   }),
 
   // Simple Title Section
@@ -602,7 +753,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: '-5px',
-    transform: isMobile ? 'translateX(-80px)' : isTablet ? 'translateX(-120px)' : 'translateX(-160px)',
+    transform: isMobile ? 'translateX(40px)' : isTablet ? 'translateX(-120px)' : 'translateX(-160px)',
   }),
 
   elementImage: (isMobile, isTablet) => ({
@@ -645,7 +796,7 @@ const styles = {
 
   firstStepContent: (isMobile, isTablet) => ({
     flex: isMobile ? 'none' : '1',
-    textAlign: isMobile ? 'center' : 'right',
+    textAlign: 'center',
   }),
 
   firstStepTitle: (isMobile, isTablet) => ({
@@ -656,6 +807,7 @@ const styles = {
     color: '#141F39',
     margin: '0 0 15px 0',
     whiteSpace: 'nowrap',
+    textAlign: 'center',
   }),
 
   firstStepText: (isMobile, isTablet) => ({
@@ -665,6 +817,7 @@ const styles = {
     lineHeight: isMobile ? '28px' : isTablet ? '32px' : '36px',
     color: '#1B2B4D',
     maxWidth: isMobile ? '100%' : '500px',
+    textAlign: 'center',
   }),
 
   // Second Step Section Styles
@@ -701,7 +854,7 @@ const styles = {
 
   secondStepContent: (isMobile, isTablet) => ({
     flex: isMobile ? 'none' : '1',
-    textAlign: isMobile ? 'center' : 'right',
+    textAlign: 'center',
     direction: 'rtl',
   }),
 
@@ -714,7 +867,7 @@ const styles = {
     margin: '0 0 15px 0',
     whiteSpace: 'nowrap',
     direction: 'rtl',
-    textAlign: 'right',
+    textAlign: 'center',
   }),
 
   secondStepText: (isMobile, isTablet) => ({
@@ -725,7 +878,7 @@ const styles = {
     color: '#4F4F4F',
     maxWidth: isMobile ? '100%' : '500px',
     direction: 'rtl',
-    textAlign: 'right',
+    textAlign: 'center',
   }),
 
   // Third Step Section Styles
@@ -762,7 +915,7 @@ const styles = {
 
   thirdStepContent: (isMobile, isTablet) => ({
     flex: isMobile ? 'none' : '1',
-    textAlign: isMobile ? 'center' : 'right',
+    textAlign: 'center',
     direction: 'rtl',
   }),
 
@@ -775,7 +928,7 @@ const styles = {
     margin: '0 0 15px 0',
     whiteSpace: 'nowrap',
     direction: 'rtl',
-    textAlign: 'right',
+    textAlign: 'center',
   }),
 
   thirdStepText: (isMobile, isTablet) => ({
@@ -786,13 +939,13 @@ const styles = {
     color: '#4F4F4F',
     maxWidth: isMobile ? '100%' : '500px',
     direction: 'rtl',
-    textAlign: 'right',
+    textAlign: 'center',
   }),
 
   // Numbers Section Styles
   numbersSection: (isMobile, isTablet) => ({
     width: '100%',
-    padding: isMobile ? '40px 20px' : isTablet ? '50px 40px' : '60px 60px',
+    padding: isMobile ? '50px 20px' : isTablet ? '60px 40px' : '80px 60px',
     backgroundColor: '#DFF0F5',
     marginTop: '-20px',
   }),
@@ -800,11 +953,11 @@ const styles = {
   numbersTitle: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
-    fontSize: isMobile ? '32px' : isTablet ? '48px' : '64px',
-    lineHeight: isMobile ? '40px' : isTablet ? '56px' : '72px',
+    fontSize: isMobile ? '28px' : isTablet ? '42px' : '56px',
+    lineHeight: isMobile ? '36px' : isTablet ? '50px' : '64px',
     color: '#1B2B4D',
     textAlign: 'center',
-    margin: '0 0 30px 0',
+    margin: '0 0 40px 0',
     direction: 'rtl',
   }),
 
@@ -812,8 +965,8 @@ const styles = {
     display: 'flex',
     flexDirection: isMobile ? 'column' : 'row',
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    gap: isMobile ? '40px' : isTablet ? '60px' : '80px',
+    alignItems: 'center',
+    gap: isMobile ? '35px' : isTablet ? '50px' : '70px',
     maxWidth: '1200px',
     margin: '0 auto',
   }),
@@ -822,49 +975,156 @@ const styles = {
     textAlign: 'center',
     flex: '1',
     direction: 'rtl',
+    padding: isMobile ? '20px 15px' : '0',
+    backgroundColor: isMobile ? 'rgba(255, 255, 255, 0.6)' : 'transparent',
+    borderRadius: isMobile ? '16px' : '0',
+    boxShadow: isMobile ? '0 4px 12px rgba(0, 0, 0, 0.1)' : 'none',
+    minWidth: isMobile ? '280px' : 'auto',
+    maxWidth: isMobile ? '320px' : 'none',
   }),
 
-  numberMain: {
+  numberMain: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 700,
-    fontSize: '48px',
+    fontSize: isMobile ? '36px' : isTablet ? '42px' : '48px',
     lineHeight: '1',
-    color: '#1B2B4D',
-    margin: '0 0 16px 0',
-    direction: 'rtl',
-  },
-
-  numberSubtitle: {
-    fontFamily: "'Varela Round', sans-serif",
-    fontWeight: 600,
-    fontSize: '20px',
-    lineHeight: '1.2',
     color: '#1B2B4D',
     margin: '0 0 12px 0',
     direction: 'rtl',
-  },
+  }),
 
-  numberHighlight: {
+  numberSubtitle: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
-    fontWeight: 500,
-    fontSize: '16px',
+    fontWeight: 600,
+    fontSize: isMobile ? '18px' : isTablet ? '19px' : '20px',
     lineHeight: '1.3',
     color: '#1B2B4D',
-    margin: '0 0 8px 0',
+    margin: '0 0 10px 0',
+    direction: 'rtl',
+  }),
+
+  numberHighlight: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 500,
+    fontSize: isMobile ? '15px' : isTablet ? '15px' : '16px',
+    lineHeight: '1.4',
+    color: '#1B2B4D',
+    margin: '0 0 6px 0',
     direction: 'rtl',
     opacity: 0.8,
-  },
+  }),
 
-  numberSubtext: {
+  numberSubtext: (isMobile, isTablet) => ({
     fontFamily: "'Varela Round', sans-serif",
     fontWeight: 400,
-    fontSize: '14px',
-    lineHeight: '1.3',
+    fontSize: isMobile ? '13px' : isTablet ? '13px' : '14px',
+    lineHeight: '1.4',
     color: '#1B2B4D',
     margin: '0',
     direction: 'rtl',
     opacity: 0.7,
-  }
+  }),
+
+  // FAQ Section Styles
+  faqSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    marginTop: '-20px',
+  }),
+
+  faqTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '32px' : isTablet ? '48px' : '64px',
+    lineHeight: isMobile ? '40px' : isTablet ? '56px' : '72px',
+    color: '#141F39',
+    margin: '0 0 10px 0',
+    textAlign: 'center',
+    position: 'relative',
+    direction: 'rtl',
+  }),
+
+  faqUnderline: (isMobile, isTablet) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '-5px',
+    transform: isMobile ? 'translateX(0px)' : isTablet ? 'translateX(0px)' : 'translateX(0px)',
+  }),
+
+  faqElementImage: (isMobile, isTablet) => ({
+    width: isMobile ? '200px' : isTablet ? '300px' : '400px',
+    height: 'auto',
+    objectFit: 'contain',
+  }),
+
+  // FAQ Container and Items
+  faqContainer: (isMobile, isTablet) => ({
+    maxWidth: isMobile ? '100%' : '800px',
+    margin: '40px auto 0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: isMobile ? '15px' : '20px',
+    width: isMobile ? '100%' : 'auto',
+  }),
+
+  faqItem: (isMobile, isTablet) => ({
+    backgroundColor: '#DFF0F5',
+    borderRadius: isMobile ? '20px' : '25px',
+    overflow: 'hidden',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+    transition: 'all 0.3s ease',
+  }),
+
+  faqQuestion: (isMobile, isTablet) => ({
+    padding: isMobile ? '20px' : '25px',
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    transition: 'background-color 0.3s ease',
+    direction: 'rtl',
+  }),
+
+  faqQuestionText: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 600,
+    fontSize: isMobile ? '18px' : isTablet ? '20px' : '22px',
+    lineHeight: '1.4',
+    color: '#1B2B4D',
+    flex: '1',
+    textAlign: 'right',
+    direction: 'rtl',
+  }),
+
+  faqIcon: (isMobile, isTablet, isOpen) => ({
+    width: isMobile ? '24px' : '28px',
+    height: isMobile ? '24px' : '28px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.3s ease',
+    marginLeft: '15px',
+  }),
+
+  faqAnswer: (isMobile, isTablet) => ({
+    padding: isMobile ? '0 20px 20px 20px' : '0 25px 25px 25px',
+    borderTop: '1px solid rgba(27, 43, 77, 0.1)',
+    direction: 'rtl',
+  }),
+
+  faqAnswerText: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '16px' : isTablet ? '18px' : '20px',
+    lineHeight: '1.6',
+    color: '#4F4F4F',
+    margin: '15px 0 0 0',
+    textAlign: 'right',
+    direction: 'rtl',
+  })
   
 };
 
