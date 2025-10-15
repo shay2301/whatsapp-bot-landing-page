@@ -550,7 +550,7 @@
                     <div class="contact-status">מקוון</div>
                 </div>
                 <div class="contact-avatar">
-                    <img src="agent image.png" alt="Contact">
+                    <img src="/agent image.png" alt="Contact">
                 </div>
                 <div class="back-arrow">‹</div>
             </div>
@@ -599,7 +599,7 @@
             { type: 'bot', text: 'הבנתי. יש נזק לרכב שלך?', time: '10:26', delay: 1500 },
             { type: 'user', text: 'כן, מראה ימין שבורה ושריטה בדלת', time: '10:26', delay: 2000 },
             { type: 'bot', text: 'בבקשה צלם את הנזק ושלח לי תמונות 📸', time: '10:26', delay: 1500 },
-            { type: 'user', text: '', time: '10:27', delay: 3000, image: 'accident.png' },
+            { type: 'user', text: '', time: '10:27', delay: 3000, image: '/accident.png' },
             { type: 'bot', text: 'תמונה התקבלה ✅\n\nמה מספר הרישוי של הרכב שלך?', time: '10:27', delay: 1500 },
             { type: 'user', text: '12-345-67', time: '10:27', delay: 1500 },
             { type: 'bot', text: 'מצוין!\n\nסיכום התביעה שלך:\n📍 מיקום: דיזנגוף פינת ארלוזורוב\n🕐 זמן: היום 8:30\n🚗 רכב: 12-345-67\n📋 נזק: מראה ימין, שריטה בדלת\n📷 תמונה: 1\n\nהכל נכון?', time: '10:27', delay: 2000 },
@@ -632,8 +632,8 @@
         }
 
         // Avatar image URLs
-        const USER_AVATAR = 'customer image.png'; // Dani Levi - person with beard
-        const BOT_AVATAR = 'agent image.png';  // AI Agent - robot in suit
+        const USER_AVATAR = '/customer image.png'; // Dani Levi - person with beard
+        const BOT_AVATAR = '/agent image.png';  // AI Agent - robot in suit
 
         function addMessage(message) {
             const messageDiv = document.createElement('div');
