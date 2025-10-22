@@ -19,8 +19,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
         
+        /* Smooth scrolling and performance optimizations */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Improve mobile scrolling */
         body {
             font-family: 'Heebo', sans-serif;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent layout shift during animations */
+        * {
+            will-change: auto;
         }
         
         /* Custom styles for Hebrew text */
@@ -29,6 +41,7 @@
             direction: rtl;
             text-align: right;
         }
+
     </style>
 </head>
 <body>

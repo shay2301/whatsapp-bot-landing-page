@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useResponsive } from '../hooks/useResponsive';
+import AnimatedSection from './animations/AnimatedSection';
+import AnimatedButton from './animations/AnimatedButton';
+import AnimatedNumber from './animations/AnimatedNumber';
+import { StaggerContainer, StaggerItem } from './animations/StaggerContainer';
+import { fadeInUp, fadeInLeft, fadeInRight, scaleIn, cardHover } from '../utils/animationConfig';
+import { motion } from 'framer-motion';
 
 const LandingPage = () => {
   const { isMobile, isTablet, width } = useResponsive();
@@ -22,10 +28,12 @@ const LandingPage = () => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
 
+
   return (
     <div style={styles.landingPage}>
       {/* Hero Section */}
-      <section style={styles.heroSection(isMobile, isTablet)}>
+      <AnimatedSection variant={fadeInUp}>
+        <section style={styles.heroSection(isMobile, isTablet)}>
         <div style={styles.heroContainer(isMobile, isSmallScreen)}>
           
           {/* Navigation */}
@@ -53,9 +61,14 @@ const LandingPage = () => {
           <div style={styles.textContainer(isMobile)}>
             {isMobile ? (
               <div style={styles.mobileTitleContainer}>
-                <h1 style={styles.mobileHeroTitle}>
+                <motion.h1 
+                  style={styles.mobileHeroTitle}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
+                >
                   העוזר החכם שלך לתביעות עובד בשבילך , מדבר כמוך !
-                </h1>
+                </motion.h1>
                 {/* Yellow underline after "כמוך" in mobile */}
                 <div style={styles.yellowUnderlineAfterTitle}>
                   <img 
@@ -71,8 +84,22 @@ const LandingPage = () => {
               </div>
             ) : (
               <>
-                <h1 style={styles.heroTitle1(isMobile)}>העוזר החכם שלך לתביעות </h1>
-                <h1 style={styles.heroTitle2(isMobile)}>עובד בשבילך , מדבר כמוך ! </h1>
+                <motion.h1 
+                  style={styles.heroTitle1(isMobile)}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
+                >
+                  העוזר החכם שלך לתביעות 
+                </motion.h1>
+                <motion.h1 
+                  style={styles.heroTitle2(isMobile)}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.4, ease: [0.43, 0.13, 0.23, 0.96] }}
+                >
+                  עובד בשבילך , מדבר כמוך ! 
+                </motion.h1>
               </>
             )}
             
@@ -85,52 +112,41 @@ const LandingPage = () => {
 
 
           {/* Person Image */}
-          <div style={styles.personImage(isMobile, isTablet, width)}>
+          <motion.div 
+            style={styles.personImage(isMobile, isTablet, width)}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+          >
             <img 
-              src="/HeroPic.png" 
+              src="./HeroPic.png" 
               alt="Person"
               style={styles.personImageImg}
               onError={(e) => {
+                console.log('Image failed to load:', e.target.src);
                 // Fallback illustration if image not found
                 e.target.style.display = 'none';
                 e.target.parentElement.innerHTML = '<div style="width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, #E8E0FF 0%, #D4C5FF 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(113, 93, 227, 0.3);"><svg style="width: 60%; height: 60%; opacity: 0.6;" fill="#715DE3" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg></div>';
               }}
             />
-          </div>
+          </motion.div>
 
 
           {/* Buttons Container */}
           <div style={styles.buttonsContainer(isMobile)}>
             <div style={styles.heroButtons(isMobile)}>
-              <button 
+              <AnimatedButton
                 style={styles.btnPrimary(isMobile)}
                 onClick={handleStartClick}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(88, 204, 2, 0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
+                isPrimary={true}
+                enablePulse={false}
               >
                 בואו נצא לדרך
-              </button>
-              <button 
+              </AnimatedButton>
+              <AnimatedButton
                 style={styles.btnSecondary(isMobile)}
                 onClick={handleDemoClick}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1CB0F6';
-                  e.currentTarget.style.color = 'white';
-                  const playIcon = e.currentTarget.querySelector('.play-icon');
-                  if (playIcon) playIcon.style.background = 'white';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = '#1CB0F6';
-                  const playIcon = e.currentTarget.querySelector('.play-icon');
-                  if (playIcon) playIcon.style.background = '#1CB0F6';
-                }}
+                isPrimary={false}
               >
                 <span className="play-icon" style={styles.playIcon}>
                   <svg width="10" height="12" viewBox="0 0 10 12" fill="white" style={{marginLeft: '2px'}}>
@@ -138,14 +154,16 @@ const LandingPage = () => {
                   </svg>
                 </span>
                 צפו בדמו
-              </button>
+              </AnimatedButton>
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </AnimatedSection>
 
       {/* Business Benefits Section */}
-      <section style={styles.businessBenefitsSection(isMobile, isTablet)}>
+      <AnimatedSection variant={fadeInUp}>
+        <section style={styles.businessBenefitsSection(isMobile, isTablet)}>
         <h2 style={styles.businessBenefitsTitle(isMobile, isTablet)}>
           מה זה יעשה לעסק שלכם
         </h2>
@@ -157,7 +175,8 @@ const LandingPage = () => {
             ולכם מתפנה המשאב היקר מכל - הזמן שלכם לספק שירות איכותי ולהתמקד בצמיחת העסק
           </p>
         </div>
-      </section>
+        </section>
+      </AnimatedSection>
 
         {/* Simple Title Section */}
         <section style={styles.simpleTitleSection(isMobile, isTablet)}>
@@ -178,8 +197,12 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* First Step Section */}
-        <section style={styles.firstStepSection(isMobile, isTablet)}>
+        {/* Three Steps Container */}
+        <StaggerContainer>
+          {/* First Step Section */}
+          <StaggerItem>
+            <AnimatedSection variant={fadeInLeft}>
+              <section style={styles.firstStepSection(isMobile, isTablet)}>
           <div style={styles.firstStepContainer(isMobile, isTablet)}>
             {isMobile ? (
               <>
@@ -225,10 +248,14 @@ const LandingPage = () => {
               </>
             )}
           </div>
-        </section>
+              </section>
+            </AnimatedSection>
+          </StaggerItem>
 
-        {/* Second Step Section */}
-        <section style={styles.secondStepSection(isMobile, isTablet)}>
+          {/* Second Step Section */}
+          <StaggerItem>
+            <AnimatedSection variant={fadeInRight}>
+              <section style={styles.secondStepSection(isMobile, isTablet)}>
           <div style={styles.secondStepContainer(isMobile, isTablet)}>
             {isMobile ? (
               <>
@@ -274,10 +301,14 @@ const LandingPage = () => {
               </>
             )}
           </div>
-        </section>
+              </section>
+            </AnimatedSection>
+          </StaggerItem>
 
-        {/* Third Step Section */}
-        <section style={styles.thirdStepSection(isMobile, isTablet)}>
+          {/* Third Step Section */}
+          <StaggerItem>
+            <AnimatedSection variant={fadeInLeft}>
+              <section style={styles.thirdStepSection(isMobile, isTablet)}>
           <div style={styles.thirdStepContainer(isMobile, isTablet)}>
             {isMobile ? (
               <>
@@ -323,92 +354,192 @@ const LandingPage = () => {
               </>
             )}
           </div>
-        </section>
+              </section>
+            </AnimatedSection>
+          </StaggerItem>
+        </StaggerContainer>
 
         {/* Numbers Section */}
-        <section style={styles.numbersSection(isMobile, isTablet)}>
-          <h2 style={styles.numbersTitle(isMobile, isTablet)}>
-            המספרים מדברים בעד עצמם
-          </h2>
-          <div style={styles.numbersContainer(isMobile, isTablet)}>
-            <div style={styles.numberItem(isMobile, isTablet)}>
-              <div style={styles.numberMain(isMobile, isTablet)}>מידי</div>
-              <h3 style={styles.numberSubtitle(isMobile, isTablet)}>זמן תגובה ללקוח</h3>
-              <p style={styles.numberHighlight(isMobile, isTablet)}>מ-3 שעות למענה מידי</p>
-              <p style={styles.numberSubtext(isMobile, isTablet)}>+100% שביעות רצון</p>
-            </div>
-            <div style={styles.numberItem(isMobile, isTablet)}>
-              <div style={styles.numberMain(isMobile, isTablet)}>3 דק׳</div>
-              <h3 style={styles.numberSubtitle(isMobile, isTablet)}>זמן תפעול ממוצע לתביעה</h3>
-              <p style={styles.numberHighlight(isMobile, isTablet)}>מ-30 דקות ל-3 דקות</p>
-              <p style={styles.numberSubtext(isMobile, isTablet)}>90% פחות זמן עבודה</p>
-            </div>
-            <div style={styles.numberItem(isMobile, isTablet)}>
-              <div style={styles.numberMain(isMobile, isTablet)}>9 שעות</div>
-              <h3 style={styles.numberSubtitle(isMobile, isTablet)}>שעות שנחסכות חודשית</h3>
-              <p style={styles.numberHighlight(isMobile, isTablet)}>מ-10 ל-1 שעה בחודש</p>
-              <p style={styles.numberSubtext(isMobile, isTablet)}>שבוע עבודה שלם בשנה</p>
-            </div>
-          </div>
-        </section>
+        <AnimatedSection variant={fadeInUp}>
+          <section style={styles.numbersSection(isMobile, isTablet)}>
+            <h2 style={styles.numbersTitle(isMobile, isTablet)}>
+              המספרים מדברים בעד עצמם
+            </h2>
+            
+            <StaggerContainer style={styles.numbersContainer(isMobile, isTablet)}>
+              <StaggerItem>
+                <motion.div 
+                  style={styles.numberItem(isMobile, isTablet)}
+                  whileHover={cardHover}
+                >
+                  <motion.div 
+                    style={styles.numberMain(isMobile, isTablet)}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    מידי
+                  </motion.div>
+                  <h3 style={styles.numberSubtitle(isMobile, isTablet)}>זמן תגובה ללקוח</h3>
+                  <p style={styles.numberHighlight(isMobile, isTablet)}>מ-3 שעות למענה מידי</p>
+                  <p style={styles.numberSubtext(isMobile, isTablet)}>+100% שביעות רצון</p>
+                </motion.div>
+              </StaggerItem>
+              
+              <StaggerItem>
+                <motion.div 
+                  style={styles.numberItem(isMobile, isTablet)}
+                  whileHover={cardHover}
+                >
+                  <motion.div 
+                    style={styles.numberMain(isMobile, isTablet)}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    viewport={{ once: true }}
+                  >
+                    3 דק׳
+                  </motion.div>
+                  <h3 style={styles.numberSubtitle(isMobile, isTablet)}>זמן תפעול ממוצע לתביעה</h3>
+                  <p style={styles.numberHighlight(isMobile, isTablet)}>מ-30 דקות ל-3 דקות</p>
+                  <p style={styles.numberSubtext(isMobile, isTablet)}>90% פחות זמן עבודה</p>
+                </motion.div>
+              </StaggerItem>
+              
+              <StaggerItem>
+                <motion.div 
+                  style={styles.numberItem(isMobile, isTablet)}
+                  whileHover={cardHover}
+                >
+                  <motion.div 
+                    style={styles.numberMain(isMobile, isTablet)}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    viewport={{ once: true }}
+                  >
+                    9 שעות
+                  </motion.div>
+                  <h3 style={styles.numberSubtitle(isMobile, isTablet)}>שעות שנחסכות חודשית</h3>
+                  <p style={styles.numberHighlight(isMobile, isTablet)}>מ-10 ל-1 שעה בחודש</p>
+                  <p style={styles.numberSubtext(isMobile, isTablet)}>שבוע עבודה שלם בשנה</p>
+                </motion.div>
+              </StaggerItem>
+            </StaggerContainer>
+          </section>
+        </AnimatedSection>
 
         {/* FAQ Section */}
-        <section style={styles.faqSection(isMobile, isTablet)}>
-          <h2 style={styles.faqTitle(isMobile, isTablet)}>
-            תשאלו אותנו
-          </h2>
-          <div style={styles.faqUnderline(isMobile, isTablet)}>
-            <img
-              src="/Element.png"
-              alt=""
-              style={styles.faqElementImage(isMobile, isTablet)}
-              onError={(e) => {
-                // Fallback SVG if image not found
-                e.target.style.display = 'none';
-                e.target.parentElement.innerHTML = '<svg viewBox="0 0 200 20" style="width: 200px; height: 20px;"><path d="M10 10 Q50 5, 100 10 T190 10" stroke="#FFC700" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
-              }}
-            />
-          </div>
-          
-          {/* FAQ Questions */}
-          <div style={styles.faqContainer(isMobile, isTablet)}>
-            {[
-              "איך הבוט עובד?",
-              "כמה זמן לוקח להגדיר את הבוט?",
-              "האם הבוט יכול לטפל בכל סוגי התביעות?",
-              "מה העלות של השירות?"
-            ].map((question, index) => (
-              <div key={index} style={styles.faqItem(isMobile, isTablet)}>
-                <div 
-                  style={styles.faqQuestion(isMobile, isTablet)}
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <span style={styles.faqQuestionText(isMobile, isTablet)}>
-                    {question}
-                  </span>
-                  <div style={styles.faqIcon(isMobile, isTablet, openFAQ === index)}>
-                    {openFAQ === index ? (
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="#4B4B4B">
-                        <path d="M7.5 12.5 L12.5 7.5 L17.5 12.5" stroke="#4B4B4B" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    ) : (
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="#4B4B4B">
-                        <path d="M12.5 7.5 L7.5 12.5 L12.5 17.5" stroke="#4B4B4B" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+        <AnimatedSection variant={fadeInUp}>
+          <section style={styles.faqSection(isMobile, isTablet)}>
+            <h2 style={styles.faqTitle(isMobile, isTablet)}>
+              תשאלו אותנו
+            </h2>
+            <div style={styles.faqUnderline(isMobile, isTablet)}>
+              <img
+                src="/Element.png"
+                alt=""
+                style={styles.faqElementImage(isMobile, isTablet)}
+                onError={(e) => {
+                  // Fallback SVG if image not found
+                  e.target.style.display = 'none';
+                  e.target.parentElement.innerHTML = '<svg viewBox="0 0 200 20" style="width: 200px; height: 20px;"><path d="M10 10 Q50 5, 100 10 T190 10" stroke="#FFC700" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
+                }}
+              />
+            </div>
+            
+            {/* FAQ Questions */}
+            <StaggerContainer style={styles.faqContainer(isMobile, isTablet)}>
+              {[
+                "איך הבוט עובד?",
+                "כמה זמן לוקח להגדיר את הבוט?",
+                "האם הבוט יכול לטפל בכל סוגי התביעות?",
+                "מה העלות של השירות?"
+              ].map((question, index) => (
+                <StaggerItem key={index}>
+                  <motion.div 
+                    style={styles.faqItem(isMobile, isTablet)}
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div 
+                      style={styles.faqQuestion(isMobile, isTablet)}
+                      onClick={() => toggleFAQ(index)}
+                    >
+                      <span style={styles.faqQuestionText(isMobile, isTablet)}>
+                        {question}
+                      </span>
+                      <div style={styles.faqIcon(isMobile, isTablet, openFAQ === index)}>
+                        {openFAQ === index ? (
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="#4B4B4B">
+                            <path d="M7.5 12.5 L12.5 7.5 L17.5 12.5" stroke="#4B4B4B" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        ) : (
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="#4B4B4B">
+                            <path d="M12.5 7.5 L7.5 12.5 L12.5 17.5" stroke="#4B4B4B" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                    {openFAQ === index && (
+                      <div style={styles.faqAnswer(isMobile, isTablet)}>
+                        <p style={styles.faqAnswerText(isMobile, isTablet)}>
+                          תוכן התשובה יופיע כאן...
+                        </p>
+                      </div>
                     )}
-                  </div>
-                </div>
-                {openFAQ === index && (
-                  <div style={styles.faqAnswer(isMobile, isTablet)}>
-                    <p style={styles.faqAnswerText(isMobile, isTablet)}>
-                      תוכן התשובה יופיע כאן...
-                    </p>
-                  </div>
-                )}
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </section>
+        </AnimatedSection>
+
+        {/* Footer Box Section */}
+        <AnimatedSection variant={fadeInUp}>
+          <section style={styles.footerBoxSection(isMobile, isTablet)}>
+            {/* Asterisk Shape - Top Right */}
+            <div style={styles.asteriskShape(isMobile, isTablet)}>
+              <img 
+                src="/Asterisk.png" 
+                alt="Asterisk" 
+                style={styles.asteriskImage(isMobile, isTablet)}
+                onError={(e) => {
+                  console.log('Asterisk image failed to load:', e.target.src);
+                  e.target.style.display = 'none';
+                }}
+              />
+            </div>
+            
+            <div style={styles.footerBoxContent(isMobile, isTablet)}>
+              <h3 style={styles.footerBoxTitle(isMobile, isTablet)}>
+                מוכנים להתחיל?
+              </h3>
+              <p style={styles.footerBoxSubtitle(isMobile, isTablet)}>
+                בואו נשנה את הדרך שבה אתם מטפלים בתביעות
+              </p>
+              <div style={styles.footerBoxButtons(isMobile, isTablet)}>
+                <AnimatedButton
+                  style={styles.footerBoxBtnPrimary(isMobile, isTablet)}
+                  onClick={handleStartClick}
+                  isPrimary={true}
+                  enablePulse={false}
+                >
+                  בואו נצא לדרך
+                </AnimatedButton>
+                <AnimatedButton
+                  style={styles.footerBoxBtnSecondary(isMobile, isTablet)}
+                  onClick={handleDemoClick}
+                  isPrimary={false}
+                >
+                  <span className="play-icon" style={styles.playIcon}>▶</span>
+                  צפו בדמו
+                </AnimatedButton>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          </section>
+        </AnimatedSection>
 
     </div>
   );
@@ -1028,10 +1159,12 @@ const styles = {
   // FAQ Section Styles
   faqSection: (isMobile, isTablet) => ({
     width: '100%',
-    padding: isMobile ? '60px 20px' : isTablet ? '80px 40px' : '100px 60px',
+    padding: isMobile ? '60px 20px 120px' : isTablet ? '80px 40px 140px' : '100px 60px 160px',
     backgroundColor: 'white',
     textAlign: 'center',
     marginTop: '-20px',
+    position: 'relative',
+    zIndex: 1,
   }),
 
   faqTitle: (isMobile, isTablet) => ({
@@ -1124,7 +1257,111 @@ const styles = {
     margin: '15px 0 0 0',
     textAlign: 'right',
     direction: 'rtl',
-  })
+  }),
+
+  // Footer Box Styles
+  footerBoxSection: (isMobile, isTablet) => ({
+    width: '100%',
+    padding: isMobile ? '30px 20px' : '40px 60px', // הקטנתי את הגובה
+    backgroundColor: '#FFE492', // צבע צהוב
+    borderRadius: isMobile ? '40px 40px 0 0' : '60px 60px 0 0', // רק החלק העליון מעוגל
+    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative', // כדי למקם את התמונה
+    overflow: 'hidden', // כדי שהתמונה לא תצא מהתיבה
+  }),
+
+  footerBoxContent: (isMobile, isTablet) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: isMobile ? '12px' : '18px', // הקטנתי את הרווחים
+    maxWidth: isMobile ? '100%' : '800px',
+  }),
+
+  footerBoxTitle: (isMobile, isTablet) => ({
+    fontFamily: "'Varela Round', sans-serif",
+    fontWeight: 700,
+    fontSize: isMobile ? '24px' : isTablet ? '28px' : '32px', // הקטנתי את הגודל
+    lineHeight: '1.3',
+    color: '#1B2B4D', // טקסט כחול על רקע צהוב
+    margin: 0,
+    direction: 'rtl',
+  }),
+
+  footerBoxSubtitle: (isMobile, isTablet) => ({
+    fontFamily: "'Heebo', sans-serif",
+    fontWeight: 400,
+    fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px', // הקטנתי את הגודל
+    lineHeight: '1.6',
+    color: '#6B7280', // טקסט אפור על רקע צהוב
+    margin: 0,
+    direction: 'rtl',
+    maxWidth: isMobile ? '100%' : '600px',
+  }),
+
+  footerBoxButtons: (isMobile, isTablet) => ({
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    gap: isMobile ? '15px' : '20px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  }),
+
+  footerBoxBtnPrimary: (isMobile, isTablet) => ({
+    backgroundColor: '#1B2B4D', // רקע כחול על רקע צהוב
+    color: 'white', // טקסט לבן
+    border: 'none',
+    borderRadius: isMobile ? '25px' : '30px',
+    padding: isMobile ? '12px 25px' : '15px 35px', // הקטנתי את ה-padding
+    fontSize: isMobile ? '14px' : '16px', // הקטנתי את הגודל
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    fontFamily: "'Heebo', sans-serif",
+    direction: 'rtl',
+    minWidth: isMobile ? '180px' : '200px', // הקטנתי את הרוחב
+    boxShadow: '0 4px 15px rgba(27, 43, 77, 0.3)',
+  }),
+
+  footerBoxBtnSecondary: (isMobile, isTablet) => ({
+    backgroundColor: 'transparent',
+    color: '#1B2B4D', // טקסט כחול על רקע צהוב
+    border: '2px solid #1B2B4D', // גבול כחול
+    borderRadius: isMobile ? '25px' : '30px',
+    padding: isMobile ? '12px 25px' : '15px 35px', // הקטנתי את ה-padding
+    fontSize: isMobile ? '14px' : '16px', // הקטנתי את הגודל
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    fontFamily: "'Heebo', sans-serif",
+    direction: 'rtl',
+    minWidth: isMobile ? '180px' : '200px', // הקטנתי את הרוחב
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+  }),
+
+  // Asterisk Shape Styles
+  asteriskShape: (isMobile, isTablet) => ({
+    position: 'absolute',
+    top: isMobile ? '15px' : '20px', // זזתי יותר פנימה
+    right: isMobile ? '20px' : '35px', // זזתי יותר פנימה
+    zIndex: 1,
+    opacity: 0.7, // שקוף קצת כדי לא להפריע לתוכן
+  }),
+
+  asteriskImage: (isMobile, isTablet) => ({
+    width: isMobile ? '50px' : '75px', // הגדלתי את הגודל
+    height: isMobile ? '50px' : '75px', // הגדלתי את הגודל
+    objectFit: 'contain',
+    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))', // צל עדין
+  }),
+
   
 };
 

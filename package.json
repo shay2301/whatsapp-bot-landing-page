@@ -9,8 +9,10 @@
     "dev": "webpack serve --mode development --open"
   },
   "dependencies": {
+    "framer-motion": "^12.23.24",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.0",
@@ -24,7 +26,12 @@
     "webpack-cli": "^5.1.0",
     "webpack-dev-server": "^4.15.0"
   },
-  "keywords": ["react", "landing-page", "whatsapp", "bot"],
+  "keywords": [
+    "react",
+    "landing-page",
+    "whatsapp",
+    "bot"
+  ],
   "author": "",
   "license": "MIT"
 }
