@@ -96,3 +96,8 @@ Thumbs.db
 # Temporary folders
 tmp/
 temp/
+
+# Project documentation (private)
+docs/prd.md
+docs/architecture.md
+.bmad-core/
